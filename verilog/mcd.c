@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 int main(){
-    int M, N, R;
+    int M, P, R;
     printf("INGRESE DOS NUMEROS ENTEROS: \n");
         scanf("%i%i", &M, &N);
     do {
         R = M%N;
         if (R!=0){
-            M =N;
-            N=R;
+            M =P;
+            P=R;
         }
 
     }while(R!=0);
