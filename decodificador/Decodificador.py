@@ -7,7 +7,8 @@ cfile = None  # Archivo seleccionado
 rlines = []  # Líneas reales del código
 
 scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetros.
-scriptlines_2 = []  # Lista con posiciones correctas de salto/branch
+scriptlines_2 = []  # Lista con posiciones correctas de salto/branch.
+scriptlines_2 = []  # Lista con parámetros corregidos.
 
 jpositions = []  # Posiciones para saltos/brancheos
 
@@ -192,6 +193,8 @@ def toinstruction():
 
 
 def calculatepositions():
+    global scriptlines_2
+
     PC = -1
 
     for line in scriptlines_1:
@@ -211,5 +214,45 @@ def calculatepositions():
                 scriptlines_2.append(line)
 
 
+def removechars():
+    global scriptlines_3
+
+    for line in scriptlines_2:
+        templist = [line[0]]
+
+        for pam in line[1::]:
+            regr = re.search(r"\$\d+", pam)
+
+            if regr:  # Es una constante
+                templist.append(int(pam[1::]))
+
+            else:
+                if dic.checkKey(pam, dic.registros):
+                    templist.append(dic.registros[pam][0])
+
+                else:
+                    if pam[0] == ".":  # Ajustar posiciones de salto/brancheo
+                        for zon in jpositions:
+                            if pam == zon[1][:-1]:
+                                if line[0] == "beq":
+                                    for zonx in jpositions:
+                                        if zonx[1] == "beq":
+                                            if len(zonx) > 3:
+                                                if zonx[3] == 0:
+                                                    zonx[3] = 1
+                                                    jpositions[jpositions.index(zonx)] = zonx
+                                                    templist.append(zon[0] - zonx[0])
+                                                    break
+                                else:
+                                    templist.append(zon[0])
+                                    break
+                    else:
+                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea ?? (esperados: %s)" % (dic.funcs[line[0]]))
+                        exit()
+
+        scriptlines_3.append(templist)
+
+
 toinstruction()
 calculatepositions()
+removechars()
