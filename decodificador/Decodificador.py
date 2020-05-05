@@ -7,6 +7,9 @@ cfile = None  # Archivo seleccionado
 rlines = []  # Líneas reales del código
 
 scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetros.
+scriptlines_2 = []  # Lista con posiciones correctas de salto/branch
+
+jpositions = []  # Posiciones para saltos/brancheos
 
 # Funciones para manejo de binarios
 
@@ -58,7 +61,7 @@ torealcode()  # Eliminar espacios de las lineas
 # Instrucciones
 
 
-def addinstruction(params, nops):
+def addinstruction(params, nops=1):
     scriptlines_1.append(params)
     for __ in range(nops):
         scriptlines_1.append(["nop"])
@@ -83,7 +86,10 @@ def toinstruction():
         while("" in rpam):  # Remover los espacios de la linea
             rpam.remove("")
 
-        if(lastchar != ":"):  # Si no es una sección del código es una función.
+        if(lastchar == ":"):  # Si es una sección del código es una función.
+            scriptlines_1.append(rpam)
+
+        else:
 
             # Checamos si la instrucción existe
 
@@ -117,12 +123,12 @@ def toinstruction():
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
                 if rpam[0] == "li":
-                    addinstruction(["or", "$0", "$0", rpam[1]], 1)
-                    addinstruction(["addi", "$0", rpam[1], rpam[2]], 1)
+                    addinstruction(["or", "$0", "$0", rpam[1]])
+                    addinstruction(["addi", "$0", rpam[1], rpam[2]])
 
                 elif rpam[0] == "blt":
-                    addinstruction(["slt", rpam[1], rpam[2], "$a0"], 1)
-                    addinstruction(["beq", "$one", "$a0", rpam[3]], 1)
+                    addinstruction(["slt", rpam[1], rpam[2], "$a0"])
+                    addinstruction(["beq", "$one", "$a0", rpam[3]])
 
                 else:
                     print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
@@ -132,7 +138,78 @@ def toinstruction():
 
                 # DEFINICIÓN DE INSTRUCCIONES
 
-                pass
+                if rpam[0] == "sw":
+                    reg = re.match(r"\W*\$\d+\(\$\w+\)\s*", rpam[2])
+                    if reg:
+                        separado = rpam[2].split("$")
+                        arg2 = separado[1].split("(")[0]
+                        arg1 = separado[2].split(")")[0]
+                        addinstruction(["sw", "$" + arg1, rpam[1], "$" + arg2])
+
+                    else:
+
+                        print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
+                        exit()
+
+                elif rpam[0] == "lw":
+                    reg = re.match(r"\W*\$\d+\(\$\w+\)\s*", rpam[2])
+                    if reg:
+                        separado = rpam[2].split("$")
+                        arg2 = separado[1].split("(")[0]
+                        arg1 = separado[2].split(")")[0]
+                        addinstruction(["lw", "$" + arg1, rpam[1], "$" + arg2])
+
+                    else:
+                        print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
+                        exit()
+
+                elif rpam[0] == "addi":
+                    addinstruction(["addi", rpam[2], rpam[1], rpam[3]])
+                elif rpam[0] == "ori":
+                    addinstruction(["ori", rpam[2], rpam[1], rpam[3]])
+                elif rpam[0] == "andi":
+                    addinstruction(["andi", rpam[2], rpam[1], rpam[3]])
+                elif rpam[0] == "j":
+                    addinstruction(["j", rpam[1]])
+                elif rpam[0] == "or":
+                    addinstruction(["or", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "beq":
+                    addinstruction(["beq", rpam[1], rpam[2], rpam[3]])
+                elif rpam[0] == "add":
+                    addinstruction(["add", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "slt":
+                    addinstruction(["slt", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "sub":
+                    addinstruction(["sub", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "div":
+                    addinstruction(["div", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "mul":
+                    addinstruction(["mul", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "xor":
+                    addinstruction(["xor", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "nor":
+                    addinstruction(["nor", rpam[2], rpam[3], rpam[1]])
+
+
+def calculatepositions():
+    PC = -1
+
+    for line in scriptlines_1:
+        PC += 1
+        fpam = line[0]
+
+        if(fpam[-1] == ":"):
+            scriptlines_2.append(["nop"])
+            jpositions.append([PC, fpam])
+
+        else:
+            if fpam == "beq":
+                scriptlines_2.append(line)
+                scriptlines_2.append(["nop"])
+                jpositions.append([PC, fpam, line[3], 0])
+            else:
+                scriptlines_2.append(line)
 
 
 toinstruction()
+calculatepositions()
