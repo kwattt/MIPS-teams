@@ -51,7 +51,7 @@ funcs = {
     "nor": ["rs", "rt", "rd"], #real -> rs rt rd
     
     "nop": ["n"], # especial
-    "li": ["e"], # especial
+    "li": ["pseudo"], # especial
     "sw": ["rt", "bo"], # especial
     "lw": ["rt", "bo"], # especial
     "addi": ["rt", "rs", "c"], #real -> rs rt c
@@ -60,7 +60,7 @@ funcs = {
     "slt": ["rd", "rs", "rt"], #real -> rs rt rd 
     "beq": ["rs", "rt", "of"], #real -> rs rt
     "add": ["rs", "rt", "rd"], #real -> rs rt rd
-    "blt": ["e"] # especial
+    "blt": ["pseudo"] # especial
 }
 
 funcs_noSpecial_noR = {  

@@ -6,6 +6,8 @@ import Diccionarios as dic
 cfile = None  # Archivo seleccionado
 rlines = []  # Líneas reales del código
 
+scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetros.
+
 # Funciones para manejo de binarios
 
 
@@ -28,11 +30,12 @@ def dbin(number, clen):
 def selectfile():
     global cfile
     fName = str(input("Nombre del archivo: "))
+    print("")
 
     try:
         cfile = open(fName, 'r')
     except FileNotFoundError:
-        print("No se encontró el archivo indicado, ¿está en la misma carpeta?")
+        print("> [ERROR] No se encontró el archivo indicado, ¿está en la misma carpeta?")
         exit()
 
 
@@ -79,17 +82,35 @@ def toinstruction():
             # Checamos si la instrucción existe
 
             if not dic.checkKey(rpam[0], dic.funcs):
-                print("[ERROR] Nemonico no existente en la linea %i (%s ?)" % (linex[1], rpam[0]))
+                print("> [ERROR] Nemonico no existente en la linea %i (%s ?)" % (linex[1], rpam[0]))
                 # Añadir error de que no existe nemonico
                 exit()
 
-            # Checamos que no se escriba en un registro inaccesible.
+            # Checamos que no acceda a un registro inexistente.
 
             if len(rpam) > 1:  # Si tiene uno o más parámetros.
                 if rpam[1][0] != ".":  # Si no es una sección.
 
-                    if rpam[1] in dic.registros:  # Si es un registro existente.
-                        pass
+                    if rpam[1] not in dic.registros:  # Si es un registro existente.
+                        print("> [ERROR] Escribiste un registro inexistente en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
+                        exit()
+
+            # Checar que tenga los parámetros solicitados.
+
+            funcdata = dic.funcs[rpam[0]]
+            paramNumber = len(rpam) - 1
+            paramReal = len(funcdata)
+
+            if paramNumber != paramReal:  # Que cumpla con los parámetros solicitados
+                if funcdata[0] != "pseudo":
+                    print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
+                    exit()
+
+            if funcdata[0] != "pseudo":
+
+                # DEFINICIÓN DE PSEUDOINSTRUCCIONES
+
+#                if rpam[0] 
 
 
 toinstruction()

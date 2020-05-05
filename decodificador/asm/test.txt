@@ -1,7 +1,4 @@
+start: 
 
-hola
 
-esto
-es una 
-
-prueba
+    add $t1
