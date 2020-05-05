@@ -294,29 +294,32 @@ def converttobinary():
         opcode = line[0].lower()
         if opcode in dic.funcs_rtype:
             if opcode == "nop":
-                binval = dbin(0, 32)
+                binval += dbin(0, 32)
             else:
-                binval = dbin(0, 6)
-                binval = dbin(line[1], 5)
-                binval = dbin(line[2], 5)
-                binval = dbin(line[3], 5)
-                binval = dbin(0, 5)
-                binval = dic.funcs_rtype_func[dic.funcs_rtype.index(line[0].lower())]
+                binval += dbin(0, 6)
+                binval += dbin(line[1], 5)
+                binval += dbin(line[2], 5)
+                binval += dbin(line[3], 5)
+                binval += dbin(0, 5)
+                binval += dic.funcs_rtype_func[dic.funcs_rtype.index(line[0].lower())]
         else:
             if dic.checkKey(opcode, dic.funcs_noSpecial_noR):
-                scriptlines_3 = dic.funcs_noSpecial_noR["%s" % opcode]
-                if(len(scriptlines_3) == 4):
-                    binval = scriptlines_3[0]
-                    binval = dbin(line[1], scriptlines_3[1])
-                    binval = dbin(line[2], scriptlines_3[2])
-                    binval = dbin(line[3], scriptlines_3[3])
-                elif(len(scriptlines_3) == 2):
-                    binval = scriptlines_3[0]
-                    binval = dbin(line[1], scriptlines_3[1])
+                funcinfo = dic.funcs_noSpecial_noR["%s" % opcode]
+                if(len(funcinfo) == 4):
+                    binval += funcinfo[0]
+                    binval += dbin(line[1], funcinfo[1])
+                    binval += dbin(line[2], funcinfo[2])
+                    binval += dbin(line[3], funcinfo[3])
+                elif(len(funcinfo) == 2):
+                    binval += funcinfo[0]
+                    binval += dbin(line[1], funcinfo[1])
+
+            else:  # Error raro?
+                pass
 
         print(binval)
 
-    tofile(binval)
+        tofile(binval)
 
     closefile()
 
