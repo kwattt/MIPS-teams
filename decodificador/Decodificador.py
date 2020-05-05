@@ -13,7 +13,7 @@ rlines = []  # Líneas reales del código
 
 scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetros.
 scriptlines_2 = []  # Lista con posiciones correctas de salto/branch.
-scriptlines_2 = []  # Lista con parámetros corregidos.
+scriptlines_3 = []  # Lista con parámetros corregidos.
 
 jpositions = []  # Posiciones para saltos/brancheos
 
@@ -124,7 +124,7 @@ def toinstruction():
                     print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
                     exit()
 
-            if funcscriptlines_3[0] != "pseudo":
+            if funcscriptlines_3[0] == "pseudo":
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
@@ -280,11 +280,12 @@ def closefile():
             tfile.write("0\n")
             ftotal += 1
     tfile.write("0\n0")
+
     tfile.close()
 
 
 def converttobinary():
-    global tfile
+    global tfile, scriptlines_3
 
     tfile = open("instr.mem", 'w')
 
@@ -295,12 +296,12 @@ def converttobinary():
             if opcode == "nop":
                 binval = dbin(0, 32)
             else:
-                binval = dbin(0, 6) 
-                binval = dbin(line[1], 5) 
-                binval = dbin(line[2], 5) 
-                binval = dbin(line[3], 5) 
+                binval = dbin(0, 6)
+                binval = dbin(line[1], 5)
+                binval = dbin(line[2], 5)
+                binval = dbin(line[3], 5)
                 binval = dbin(0, 5)
-                binval = dic.funcs_rtype_func[dic.funcs_rtype.indeline(line[0].lower())]
+                binval = dic.funcs_rtype_func[dic.funcs_rtype.index(line[0].lower())]
         else:
             if dic.checkKey(opcode, dic.funcs_noSpecial_noR):
                 scriptlines_3 = dic.funcs_noSpecial_noR["%s" % opcode]
@@ -315,8 +316,9 @@ def converttobinary():
 
         print(binval)
 
-        tofile(binval)
-        closefile()
+    tofile(binval)
+
+    closefile()
 
 
 toinstruction()
