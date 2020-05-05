@@ -58,6 +58,12 @@ torealcode()  # Eliminar espacios de las lineas
 # Instrucciones
 
 
+def addinstruction(params, nops):
+    scriptlines_1.append(params)
+    for __ in range(nops):
+        scriptlines_1.append(["nop"])
+
+
 def toinstruction():
 
     for linex in rlines:
@@ -110,7 +116,23 @@ def toinstruction():
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
-#                if rpam[0] 
+                if rpam[0] == "li":
+                    addinstruction(["or", "$0", "$0", rpam[1]], 1)
+                    addinstruction(["addi", "$0", rpam[1], rpam[2]], 1)
+
+                elif rpam[0] == "blt":
+                    addinstruction(["slt", rpam[1], rpam[2], "$a0"], 1)
+                    addinstruction(["beq", "$one", "$a0", rpam[3]], 1)
+
+                else:
+                    print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
+                    exit()
+
+            else:
+
+                # DEFINICIÓN DE INSTRUCCIONES
+
+                pass
 
 
 toinstruction()
