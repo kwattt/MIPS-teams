@@ -4,6 +4,7 @@ from Diccionarios import *
 # Variables globales
 
 cfile = None  # Archivo seleccionado
+rlines = []  # Líneas reales del código
 
 # Funciones para manejo de binarios
 
@@ -35,4 +36,19 @@ def selectfile():
         exit()
 
 
-selectfile()
+def torealcode():
+    global rlines
+
+    lines = cfile.readlines()
+    cline = 1
+
+    for line in lines:
+        strippedline = line.strip()
+        if strippedline:
+            rlines.append([strippedline, cline])
+        cline += 1
+
+
+selectfile()  # Cargar archivo
+torealcode()  # Eliminar espacios de las lineas
+
