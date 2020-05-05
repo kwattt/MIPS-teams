@@ -115,16 +115,16 @@ def toinstruction():
 
             # Checar que tenga los parámetros solicitados.
 
-            funcdata = dic.funcs[rpam[0]]
+            funcscriptlines_3 = dic.funcs[rpam[0]]
             paramNumber = len(rpam) - 1
-            paramReal = len(funcdata)
+            paramReal = len(funcscriptlines_3)
 
             if paramNumber != paramReal:  # Que cumpla con los parámetros solicitados
-                if funcdata[0] != "pseudo":
+                if funcscriptlines_3[0] != "pseudo":
                     print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
                     exit()
 
-            if funcdata[0] != "pseudo":
+            if funcscriptlines_3[0] != "pseudo":
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
@@ -282,6 +282,41 @@ def closefile():
     tfile.write("0\n0")
     tfile.close()
 
+
+def converttobinary():
+    global tfile
+
+    tfile = open("instr.mem", 'w')
+
+    for line in scriptlines_3:
+        binval = ''
+        opcode = line[0].lower()
+        if opcode in dic.funcs_rtype:
+            if opcode == "nop":
+                binval = dbin(0, 32)
+            else:
+                binval = dbin(0, 6) 
+                binval = dbin(line[1], 5) 
+                binval = dbin(line[2], 5) 
+                binval = dbin(line[3], 5) 
+                binval = dbin(0, 5)
+                binval = dic.funcs_rtype_func[dic.funcs_rtype.indeline(line[0].lower())]
+        else:
+            if dic.checkKey(opcode, dic.funcs_noSpecial_noR):
+                scriptlines_3 = dic.funcs_noSpecial_noR["%s" % opcode]
+                if(len(scriptlines_3) == 4):
+                    binval = scriptlines_3[0]
+                    binval = dbin(line[1], scriptlines_3[1])
+                    binval = dbin(line[2], scriptlines_3[2])
+                    binval = dbin(line[3], scriptlines_3[3])
+                elif(len(scriptlines_3) == 2):
+                    binval = scriptlines_3[0]
+                    binval = dbin(line[1], scriptlines_3[1])
+
+        print(binval)
+
+        tofile(binval)
+        closefile()
 
 
 toinstruction()
