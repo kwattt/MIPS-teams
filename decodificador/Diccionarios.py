@@ -1,5 +1,12 @@
 
-##### Diccionarios
+# Diccionarios
+
+
+def checkKey(key, dict):       
+    if key in dict: 
+        return 1
+    else: 
+        return 0
 
 registros = {
     "$zero": [0, 0],
@@ -66,7 +73,7 @@ funcs_noSpecial_noR = {
     "j": ["000010", 26],
 }
 
-##### Listas 
+# Listas 
 
 funcs_rtype = [
     "and", "or", "add", "sub", "nop", "mul", "div", "slt", "nor", "xor"
