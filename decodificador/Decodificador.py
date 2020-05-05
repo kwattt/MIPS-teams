@@ -9,7 +9,7 @@ cfile = None  # Archivo seleccionado
 
 
 def fullbin(number, clen):
-    return ("0"* (clen - len(str(number)))) + str(number)
+    return ("0" * (clen - len(str(number)))) + str(number)
 
 
 def dec_to_bin(number):
