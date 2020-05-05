@@ -3,6 +3,11 @@ import Diccionarios as dic
 
 # Variables globales
 
+
+maxlines = 256  # Tamaño del archivo
+ftotal = 1  # Conteo para el archivo
+tfile = None  # Archivo de salida
+
 cfile = None  # Archivo seleccionado
 rlines = []  # Líneas reales del código
 
@@ -253,6 +258,33 @@ def removechars():
         scriptlines_3.append(templist)
 
 
+# Funciones para el manejo de archivo
+
+def tofile(arg):
+    global ftotal
+
+    lx = len(arg)
+    bruh = int(lx / 8)
+
+    for i in range(0, bruh):
+        tfile.write(arg[i * 8:(i * 8) + 8] + "\n")
+        print(arg[i * 8:(i * 8) + 8])
+        ftotal += 1
+
+
+def closefile():
+    global ftotal
+
+    if ftotal < maxlines:
+        while ftotal < maxlines - 1:
+            tfile.write("0\n")
+            ftotal += 1
+    tfile.write("0\n0")
+    tfile.close()
+
+
+
 toinstruction()
 calculatepositions()
 removechars()
+converttobinary()
