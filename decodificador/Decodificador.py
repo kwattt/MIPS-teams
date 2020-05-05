@@ -1,18 +1,38 @@
-import re 
-import os # For testing
-
+import re
 from Diccionarios import * 
 
+# Variables globales
 
-## Funciones para manejo de binarios
+cfile = None  # Archivo seleccionado
 
-def fullbin(x, c):
-    return ("0"*(c-len(str(x))))+str(x)
+# Funciones para manejo de binarios
 
-def dec_to_bin(x):
-    return int(bin(x)[2:])
 
-def dbin(x,c):
-    if(x == -1): return "x"*c
-    return fullbin(dec_to_bin(x), c)
+def fullbin(number, clen):
+    return ("0"* (clen - len(str(number)))) + str(number)
 
+
+def dec_to_bin(number):
+    return int(bin(number)[2:])
+
+
+def dbin(number, clen):
+    if(number == -1):
+        return "x" * clen
+    return fullbin(dec_to_bin(number), clen)
+
+# Selección de archivo
+
+
+def selectfile():
+    global cfile
+    fName = str(input("Nombre del archivo: "))
+
+    try:
+        cfile = open(fName, 'r')
+    except FileNotFoundError:
+        print("No se encontró el archivo indicado, ¿está en la misma carpeta?")
+        exit()
+
+
+selectfile()
