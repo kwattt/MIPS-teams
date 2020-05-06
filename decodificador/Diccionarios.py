@@ -56,6 +56,8 @@ funcs = {
     "blt": ["pseudo"],  # especial
     "b": ["pseudo"],  # especial
     "bgt": ["pseudo"],  # especial
+    "beg": ["pseudo"],  # especial
+    "bel": ["pseudo"],  # especial
 
     "nop": ["n"],  # especial    
     "sw": ["rt", "bo"],  # especial
