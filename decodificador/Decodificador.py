@@ -118,6 +118,10 @@ def toinstruction():
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
+
+                if rpam[0] == "b":
+                    addinstruction(linex[1], ["beq", "$zero", "$zero", rpam[3]])
+
                 if rpam[0] == "clear":
                     addinstruction(linex[1], ["or", "0", "0", rpam[1]])
 
@@ -126,6 +130,10 @@ def toinstruction():
 
                 elif rpam[0] == "blt":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
+                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
+
+                elif rpam[0] == "bgt":
+                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
                     addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
 
                 else:

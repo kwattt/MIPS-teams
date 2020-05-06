@@ -51,8 +51,14 @@ funcs = {
     "xor": ["rs", "rt", "rd"],  # real -> rs rt rd
     "nor": ["rs", "rt", "rd"],  # real -> rs rt rd
 
-    "nop": ["n"],  # especial
-    "li": ["pseudo"],  # especial
+
+    "li": ["pseudo"],  # pseudo
+    "clear": ["pseudo"],  # pseudo
+    "blt": ["pseudo"],  # especial
+    "b": ["pseudo"],  # especial
+    "bgt": ["pseudo"],  # especial
+
+    "nop": ["n"],  # especial    
     "sw": ["rt", "bo"],  # especial
     "lw": ["rt", "bo"],  # especial
     "addi": ["rt", "rs", "c"],  # real -> rs rt c
@@ -60,8 +66,7 @@ funcs = {
     "or": ["rd", "rs", "rt"],  # real -> rs rt rd
     "slt": ["rd", "rs", "rt"],  # real -> rs rt rd
     "beq": ["rs", "rt", "of"],  # real -> rs rt
-    "add": ["rs", "rt", "rd"],  # real -> rs rt rd
-    "blt": ["pseudo"]  # especial
+    "add": ["rs", "rt", "rd"]  # real -> rs rt rd
 }
 
 funcs_noSpecial_noR = {
