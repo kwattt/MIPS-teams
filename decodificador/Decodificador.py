@@ -145,24 +145,23 @@ def toinstruction():
                 # DEFINICIÓN DE INSTRUCCIONES
 
                 if rpam[0] == "sw":
-                    reg = re.match(r"\W*\$\d+\(\$\w+\)\s*", rpam[2])
+                    reg = re.match(r"(\d+?)\(\$(\w+?)\)", rpam[2])
                     if reg:
-                        separado = rpam[2].split("$")
-                        arg2 = separado[1].split("(")[0]
-                        arg1 = separado[2].split(")")[0]
-                        addinstruction(["sw", "$" + arg1, rpam[1], "$" + arg2])
 
+                        arg2 = str(reg.group(1))
+                        arg1 = str(reg.group(2))
+                        addinstruction(["sw", "$" + arg1, rpam[1], "$" + arg2])
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
                         exit()
 
                 elif rpam[0] == "lw":
-                    reg = re.match(r"\W*\$\d+\(\$\w+\)\s*", rpam[2])
+                    reg = re.match(r"(\d+?)\(\$(\w+?)\)", rpam[2])
                     if reg:
-                        separado = rpam[2].split("$")
-                        arg2 = separado[1].split("(")[0]
-                        arg1 = separado[2].split(")")[0]
+
+                        arg2 = str(reg.group(1))
+                        arg1 = str(reg.group(2))
                         addinstruction(["lw", "$" + arg1, rpam[1], "$" + arg2])
 
                     else:
