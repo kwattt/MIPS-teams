@@ -118,6 +118,15 @@ def toinstruction():
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
+                if rpam[0] == "beg":
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
+                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
+                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
+
+                if rpam[0] == "bel":
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
+                    addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
+                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
 
                 if rpam[0] == "b":
                     addinstruction(linex[1], ["beq", "$zero", "$zero", rpam[3]])

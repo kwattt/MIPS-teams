@@ -51,7 +51,6 @@ funcs = {
     "xor": ["rs", "rt", "rd"],  # real -> rs rt rd
     "nor": ["rs", "rt", "rd"],  # real -> rs rt rd
 
-
     "li": ["pseudo"],  # pseudo
     "clear": ["pseudo"],  # pseudo
     "blt": ["pseudo"],  # especial
