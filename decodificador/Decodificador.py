@@ -58,6 +58,7 @@ def torealcode():
         strippedline = line.strip()
         if strippedline:
             rlines.append([strippedline, cline])
+
         cline += 1
 
 
@@ -67,10 +68,10 @@ torealcode()  # Eliminar espacios de las lineas
 # Instrucciones
 
 
-def addinstruction(params, nops=1):
-    scriptlines_1.append(params)
+def addinstruction(linex, params, nops=1):
+    scriptlines_1.append([linex, params])
     for __ in range(nops):
-        scriptlines_1.append(["nop"])
+        scriptlines_1.append([linex, ["nop"]])
 
 
 def toinstruction():
@@ -93,7 +94,7 @@ def toinstruction():
             rpam.remove("")
 
         if(lastchar == ":"):  # Si es una sección del código es una función.
-            scriptlines_1.append(rpam)
+            scriptlines_1.append([linex[1], rpam])
 
         else:
 
@@ -129,12 +130,12 @@ def toinstruction():
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
                 if rpam[0] == "li":
-                    addinstruction(["or", "0", "0", rpam[1]])
-                    addinstruction(["addi", "0", rpam[1], rpam[2]])
+                    addinstruction(linex[1], ["or", "0", "0", rpam[1]])
+                    addinstruction(linex[1], ["addi", "0", rpam[1], rpam[2]])
 
                 elif rpam[0] == "blt":
-                    addinstruction(["slt", rpam[1], rpam[2], "$a0"])
-                    addinstruction(["beq", "$one", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
+                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
 
                 else:
                     print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
@@ -150,7 +151,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(["sw", "$" + arg1, rpam[1], arg2])
+                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2])
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -162,38 +163,38 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(["lw", "$" + arg1, rpam[1], arg2])
+                        addinstruction(linex[1], ["lw", "$" + arg1, rpam[1], arg2])
 
                     else:
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
                         exit()
 
                 elif rpam[0] == "addi":
-                    addinstruction(["addi", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]])
                 elif rpam[0] == "ori":
-                    addinstruction(["ori", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]])
                 elif rpam[0] == "andi":
-                    addinstruction(["andi", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]])
                 elif rpam[0] == "j":
-                    addinstruction(["j", rpam[1]])
+                    addinstruction(linex[1], ["j", rpam[1]])
                 elif rpam[0] == "or":
-                    addinstruction(["or", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["or", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "beq":
-                    addinstruction(["beq", rpam[1], rpam[2], rpam[3]])
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
                 elif rpam[0] == "add":
-                    addinstruction(["add", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["add", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "slt":
-                    addinstruction(["slt", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["slt", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "sub":
-                    addinstruction(["sub", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["sub", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "div":
-                    addinstruction(["div", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["div", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "mult":
-                    addinstruction(["mult", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["mult", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "xor":
-                    addinstruction(["xor", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["xor", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "nor":
-                    addinstruction(["nor", rpam[2], rpam[3], rpam[1]])
+                    addinstruction(linex[1], ["nor", rpam[2], rpam[3], rpam[1]])
 
 
 def calculatepositions():
@@ -203,17 +204,18 @@ def calculatepositions():
 
     for line in scriptlines_1:
         PC += 1
-        fpam = line[0]
+
+        fpam = line[1][0]
 
         if(fpam[-1] == ":"):
-            scriptlines_2.append(["nop"])
+            scriptlines_2.append([line[0], ["nop"]])
             jpositions.append([PC, fpam])
 
         else:
             if fpam == "beq":
                 scriptlines_2.append(line)
-                scriptlines_2.append(["nop"])
-                jpositions.append([PC, fpam, line[3], 0])
+                scriptlines_2.append([line[0], ["nop"]])
+                jpositions.append([PC, fpam, line[1][3], 0])
             else:
                 scriptlines_2.append(line)
 
@@ -222,10 +224,9 @@ def removechars():
     global scriptlines_3
 
     for line in scriptlines_2:
-        templist = [line[0]]
-
-        for pam in line[1::]:
-            print(pam)
+        templist = [line[1][0]]
+        for pam in line[1][1::]:
+            
             regr = re.search(r"^(\d+ ?)", pam)
 
             if regr:  # Es una constante
@@ -234,12 +235,11 @@ def removechars():
             else:
                 if dic.checkKey(pam, dic.registros):
                     templist.append(dic.registros[pam][0])
-
                 else:
                     if pam[0] == ".":  # Ajustar posiciones de salto/brancheo
                         for zon in jpositions:
                             if pam == zon[1][:-1]:
-                                if line[0] == "beq":
+                                if line[1][0] == "beq":
                                     for zonx in jpositions:
                                         if zonx[1] == "beq":
                                             if len(zonx) > 3:
@@ -252,11 +252,9 @@ def removechars():
                                     templist.append(zon[0])
                                     break
                     else:
-                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea ?? (>%s)(esperados: %s)" % (pam, dic.funcs[line[0]]))
+                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea %i (>%s) (esperados: %s)" % (line[0], pam, dic.funcs[line[1][0]]))
                         exit()
-
-        scriptlines_3.append(templist)
-
+        scriptlines_3.append([line[0], templist])
 
 # Funciones para el manejo de archivo
 
@@ -290,6 +288,8 @@ def converttobinary():
     tfile = open("instr.mem", 'w')
 
     for line in scriptlines_3:
+        line = line[1]
+        print(line)
         binval = ''
         opcode = line[0].lower()
         if opcode in dic.funcs_rtype:
@@ -313,11 +313,10 @@ def converttobinary():
                 elif(len(funcinfo) == 2):
                     binval += funcinfo[0]
                     binval += dbin(line[1], funcinfo[1])
-
             else:  # Error raro?
                 pass
 
-        print(binval)
+        #print(binval)
 
         tofile(binval)
 

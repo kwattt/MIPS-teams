@@ -19,6 +19,7 @@ main:
     mult $t3 $t1 $t3
 
     j .loop 
+
 .end:
     sw $t3 0($zero) # guardar factorial en memoria
     lw $t3 0($zero) # leer
