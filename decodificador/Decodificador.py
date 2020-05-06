@@ -258,6 +258,7 @@ def removechars():
 
 # Funciones para el manejo de archivo
 
+
 def tofile(arg):
     global ftotal
 
@@ -288,6 +289,7 @@ def converttobinary():
     tfile = open("instr.mem", 'w')
 
     for line in scriptlines_3:
+        linea = line[0]
         line = line[1]
         print(line)
         binval = ''
@@ -309,14 +311,17 @@ def converttobinary():
                     binval += funcinfo[0]
                     binval += dbin(line[1], funcinfo[1])
                     binval += dbin(line[2], funcinfo[2])
-                    binval += dbin(line[3], funcinfo[3])
+                    try:
+                        binval += dbin(line[3], funcinfo[3])
+                    except IndexError:
+                        print("> [ERROR] Estás accediendo a una label incorrecta con un salto/branch en la linea %i" % (linea))
+                        exit()
+
                 elif(len(funcinfo) == 2):
                     binval += funcinfo[0]
                     binval += dbin(line[1], funcinfo[1])
             else:  # Error raro?
                 pass
-
-        #print(binval)
 
         tofile(binval)
 
