@@ -189,8 +189,8 @@ def toinstruction():
                     addinstruction(["sub", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "div":
                     addinstruction(["div", rpam[2], rpam[3], rpam[1]])
-                elif rpam[0] == "mul":
-                    addinstruction(["mul", rpam[2], rpam[3], rpam[1]])
+                elif rpam[0] == "mult":
+                    addinstruction(["mult", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "xor":
                     addinstruction(["xor", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "nor":

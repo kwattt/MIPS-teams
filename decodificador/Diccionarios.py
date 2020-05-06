@@ -46,7 +46,7 @@ funcs = {
     "andi": ["rt", "rs", "c"],  # real -> rs rt c
     "ori": ["rt", "rs", "c"],  # real -> rs rt c
     "sub": ["rs", "rt", "rd"],  # real -> rs rt rd
-    "mul": ["rs", "rt", "rd"],  # real -> rs rt rd
+    "mult": ["rs", "rt", "rd"],  # real -> rs rt rd
     "div": ["rs", "rt", "rd"],  # real -> rs rt rd
     "xor": ["rs", "rt", "rd"],  # real -> rs rt rd
     "nor": ["rs", "rt", "rd"],  # real -> rs rt rd
@@ -77,7 +77,7 @@ funcs_noSpecial_noR = {
 # Listas
 
 funcs_rtype = [
-    "and", "or", "add", "sub", "nop", "mul", "div", "slt", "nor", "xor"
+    "and", "or", "add", "sub", "nop", "mult", "div", "slt", "nor", "xor"
 ] 
 
 funcs_rtype_func = ["100100", "100101", "000000", "100010", "000000", "011000", "011010", "101100", "100111", "100110"
