@@ -118,9 +118,11 @@ def toinstruction():
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
-                if rpam[0] == "li":
+                if rpam[0] == "clear":
                     addinstruction(linex[1], ["or", "0", "0", rpam[1]])
-                    addinstruction(linex[1], ["addi", "0", rpam[1], rpam[2]])
+
+                if rpam[0] == "li":
+                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]])
 
                 elif rpam[0] == "blt":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
@@ -328,14 +330,3 @@ calculatepositions()  # Calcular posiciones de labels
 removechars()  # Convertir la sintaxis de ensamblador a decimal y mover posiciones
 converttobinary()  # Convertir a binario
 print("\n>> [CORRECTO] Se terminó la decodificación de manera exitosa.")
-
-import os 
-
-run = 0
-run = int(input("Run? "))
-if run:
-    os.system("iverilog *.v -s mips_tb")
-    print("Verlog OK")
-    os.system("vvp a.out -lxt2")
-    print("VVP Ok")
-    os.system("gtkwave dump.lx2")
