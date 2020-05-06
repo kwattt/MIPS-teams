@@ -20,18 +20,11 @@ jpositions = []  # Posiciones para saltos/brancheos
 # Funciones para manejo de binarios
 
 
-def fullbin(number, clen):
-    return ("0" * (clen - len(str(number)))) + str(number)
-
-
-def dec_to_bin(number):
-    return int(bin(number)[2:])
-
-
 def dbin(number, clen):
-    if(number == -1):
-        return "x" * clen
-    return fullbin(dec_to_bin(number), clen)
+    if number < 0:
+        return bin(number % (1<<clen))[2::]
+    else: 
+        return "0" * (clen - len(bin(number % (1<<clen)) [2::])) + bin(number % (1<<clen)) [2::]
 
 # Selección de archivo
 
@@ -60,10 +53,6 @@ def torealcode():
             rlines.append([strippedline, cline])
 
         cline += 1
-
-
-selectfile()  # Cargar archivo
-torealcode()  # Eliminar espacios de las lineas
 
 # Instrucciones
 
@@ -226,8 +215,8 @@ def removechars():
     for line in scriptlines_2:
         templist = [line[1][0]]
         for pam in line[1][1::]:
-            
-            regr = re.search(r"^(\d+ ?)", pam)
+
+            regr = re.search(r"(^-?\d+(.\d+)?$ ?)", pam)
 
             if regr:  # Es una constante
                 templist.append(int(regr.group(1)))
@@ -320,16 +309,33 @@ def converttobinary():
                 elif(len(funcinfo) == 2):
                     binval += funcinfo[0]
                     binval += dbin(line[1], funcinfo[1])
+                else:  # Error raro?
+                    print("Error no clasificado")
+                    exit()
             else:  # Error raro?
-                pass
-
+                print("Error no clasificado")
+                exit()
+        print(binval)
         tofile(binval)
 
     closefile()
 
 
-toinstruction()
-calculatepositions()
-removechars()
-converttobinary()
+selectfile()  # Cargar archivo
+torealcode()  # Eliminar espacios de las lineas
+toinstruction()  # Convertir a instrucciones
+calculatepositions()  # Calcular posiciones de labels
+removechars()  # Convertir la sintaxis de ensamblador a decimal y mover posiciones
+converttobinary()  # Convertir a binario
 print("\n>> [CORRECTO] Se terminó la decodificación de manera exitosa.")
+
+import os 
+
+run = 0
+run = int(input("Run? "))
+if run:
+    os.system("iverilog *.v -s mips_tb")
+    print("Verlog OK")
+    os.system("vvp a.out -lxt2")
+    print("VVP Ok")
+    os.system("gtkwave dump.lx2")
