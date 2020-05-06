@@ -15,7 +15,7 @@ main:
 .loop: 
     blt $t0 $t1 .end 
 
-    addi $t1 $t1 $1 # $t0 = $t1 + 0
+    addi $t1 $t1 1 # $t0 = $t1 + 0
     mult $t3 $t1 $t3
 
     j .loop 

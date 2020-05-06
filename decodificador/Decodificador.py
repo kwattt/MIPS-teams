@@ -129,8 +129,8 @@ def toinstruction():
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
                 if rpam[0] == "li":
-                    addinstruction(["or", "$0", "$0", rpam[1]])
-                    addinstruction(["addi", "$0", rpam[1], rpam[2]])
+                    addinstruction(["or", "0", "0", rpam[1]])
+                    addinstruction(["addi", "0", rpam[1], rpam[2]])
 
                 elif rpam[0] == "blt":
                     addinstruction(["slt", rpam[1], rpam[2], "$a0"])
@@ -150,7 +150,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(["sw", "$" + arg1, rpam[1], "$" + arg2])
+                        addinstruction(["sw", "$" + arg1, rpam[1], arg2])
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -162,7 +162,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(["lw", "$" + arg1, rpam[1], "$" + arg2])
+                        addinstruction(["lw", "$" + arg1, rpam[1], arg2])
 
                     else:
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -225,10 +225,11 @@ def removechars():
         templist = [line[0]]
 
         for pam in line[1::]:
-            regr = re.search(r"\$\d+", pam)
+            print(pam)
+            regr = re.search(r"^(\d+ ?)", pam)
 
             if regr:  # Es una constante
-                templist.append(int(pam[1::]))
+                templist.append(int(regr.group(1)))
 
             else:
                 if dic.checkKey(pam, dic.registros):
@@ -251,7 +252,7 @@ def removechars():
                                     templist.append(zon[0])
                                     break
                     else:
-                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea ?? (esperados: %s)" % (dic.funcs[line[0]]))
+                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea ?? (>%s)(esperados: %s)" % (pam, dic.funcs[line[0]]))
                         exit()
 
         scriptlines_3.append(templist)
