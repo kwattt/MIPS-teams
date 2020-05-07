@@ -18,12 +18,11 @@ jpositions = []  # Posiciones para saltos/brancheos
 
 # Funciones para manejo de binarios
 
-
-def dbin(number, clen, c2=0):
+def dbin(number, clen, c2 = 0):
     if number < 0:
-        return bin(number % (1 << clen))[2::]
-    else:
-        return "0" * (clen - len(bin(number % (1 << clen))[2::])) + bin(number % (1 << clen))[2::]
+        return bin(number % (1<<clen))[2::]
+    else: 
+        return "0" * (clen - len(bin(number % (1<<clen)) [2::])) + bin(number % (1<<clen)) [2::]
 
 # Selección de archivo
 
@@ -116,8 +115,10 @@ def toinstruction():
             if funcscriptlines_3[0] == "pseudo":
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
+                if rpam[0] == "nop":
+                    addinstruction(linex[1], ["nop"], 0)
 
-                if rpam[0] == "bge":
+                elif rpam[0] == "bge":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
                     addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
                     addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
@@ -127,9 +128,10 @@ def toinstruction():
                     addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
                     addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
 
+
                 elif rpam[0] == "blt":
                     addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
-                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]],2)
 
                 elif rpam[0] == "bgt":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
@@ -158,7 +160,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2])
+                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2],2)
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -170,7 +172,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(linex[1], ["lw", "$" + arg1, rpam[1], arg2])
+                        addinstruction(linex[1], ["lw", "$" + arg1, rpam[1], arg2],2)
 
                     else:
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -183,11 +185,11 @@ def toinstruction():
                 elif rpam[0] == "andi":
                     addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]])
                 elif rpam[0] == "j":
-                    addinstruction(linex[1], ["j", rpam[1]])
+                    addinstruction(linex[1], ["j", rpam[1]], 2)
                 elif rpam[0] == "or":
                     addinstruction(linex[1], ["or", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "beq":
-                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]], 1)
                 elif rpam[0] == "add":
                     addinstruction(linex[1], ["add", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "slt":
