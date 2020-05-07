@@ -59,7 +59,7 @@ funcs = {
     "beg": ["pseudo"],  # especial
     "bel": ["pseudo"],  # especial
 
-    "nop": ["n"],  # especial    
+    "nop": ["pseudo"],  # especial    
     "sw": ["rt", "bo"],  # especial
     "lw": ["rt", "bo"],  # especial
     "addi": ["rt", "rs", "c"],  # real -> rs rt c

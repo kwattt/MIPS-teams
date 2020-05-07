@@ -128,10 +128,9 @@ def toinstruction():
                     addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
                     addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
 
-
                 elif rpam[0] == "blt":
                     addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
-                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]],2)
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
 
                 elif rpam[0] == "bgt":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
@@ -160,7 +159,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2],2)
+                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2])
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -172,7 +171,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(linex[1], ["lw", "$" + arg1, rpam[1], arg2],2)
+                        addinstruction(linex[1], ["lw", "$" + arg1, rpam[1], arg2], 2)
 
                     else:
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
