@@ -14,17 +14,16 @@ rlines = []  # Líneas reales del código
 scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetros.
 scriptlines_2 = []  # Lista con posiciones correctas de salto/branch.
 scriptlines_3 = []  # Lista con parámetros corregidos.
-
 jpositions = []  # Posiciones para saltos/brancheos
 
 # Funciones para manejo de binarios
 
 
-def dbin(number, clen):
+def dbin(number, clen, c2=0):
     if number < 0:
-        return bin(number % (1<<clen))[2::]
-    else: 
-        return "0" * (clen - len(bin(number % (1<<clen)) [2::])) + bin(number % (1<<clen)) [2::]
+        return bin(number % (1 << clen))[2::]
+    else:
+        return "0" * (clen - len(bin(number % (1 << clen))[2::])) + bin(number % (1 << clen))[2::]
 
 # Selección de archivo
 
@@ -118,32 +117,32 @@ def toinstruction():
 
                 # DEFINICIÓN DE PSEUDOINSTRUCCIONES
 
-                if rpam[0] == "beg":
-                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
-                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
-                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
-
-                if rpam[0] == "bel":
-                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
+                if rpam[0] == "bge":
                     addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
-                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
 
-                if rpam[0] == "b":
-                    addinstruction(linex[1], ["beq", "$zero", "$zero", rpam[3]])
-
-                if rpam[0] == "clear":
-                    addinstruction(linex[1], ["or", "0", "0", rpam[1]])
-
-                if rpam[0] == "li":
-                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]])
+                elif rpam[0] == "ble":
+                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]])
 
                 elif rpam[0] == "blt":
-                    addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
-                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
 
                 elif rpam[0] == "bgt":
-                    addinstruction(linex[1], ["slt", rpam[2], rpam[1], "$a0"])
-                    addinstruction(linex[1], ["beq", "$one", "$a0", rpam[3]])
+                    addinstruction(linex[1], ["slt", rpam[1], rpam[2], "$a0"])
+                    addinstruction(linex[1], ["beq", "$zero", "$a0", rpam[3]])
+
+                elif rpam[0] == "b":
+                    addinstruction(linex[1], ["beq", "$zero", "$zero", rpam[3]])
+
+                elif rpam[0] == "clear":
+                    addinstruction(linex[1], ["or", "0", "0", rpam[1]])
+
+                elif rpam[0] == "li":
+                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]])
 
                 else:
                     print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
@@ -324,7 +323,6 @@ def converttobinary():
                     except IndexError:
                         print("> [ERROR] Estás accediendo a una label incorrecta con un salto/branch en la linea %i" % (linea))
                         exit()
-
                 elif(len(funcinfo) == 2):
                     binval += funcinfo[0]
                     binval += dbin(line[1], funcinfo[1])
