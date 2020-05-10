@@ -1,0 +1,101 @@
+module fetch (
+	input clk,
+	
+	output zf,
+	output [31:0]resultado
+);
+
+
+wire [7:0]pcToImem;
+
+pc pc1 (
+	.clk(clk),
+	
+	.salida(pcToImem)
+);
+
+wire [31:0]imemToBuff1;
+instrucmemory instmemory (
+	.AR1(pcToImem),
+	
+	.DR1(imemToBuff1)
+);
+
+wire [31:0]buff1To;
+buffera buff1 (
+	.clk(clk),
+	.entrada(imemToBuff1),
+	
+	.func(buff1To[5:0]),
+	.shamt(buff1To[10:6]),
+	.rd(buff1To[15:11]),
+	.rt(buff1To[20:16]),
+	.rs(buff1To[25:21]),
+	.opcode(buff1To[31:26])
+);
+
+wire [5:0]aluctlToBff2;
+controlalu alucontrol(
+	.entrada(buff1To[5:0]),
+	
+	.salida(aluctlToBff2)
+);
+
+wire [4:0]rdBff3ToBr;
+wire [31:0]dataBff3ToBr;
+wire [31:0]data1ToBff2;
+wire [31:0]data2ToBff2;
+bancoregistros br (
+	.AR1(buff1To[25:21]),
+	.AR2(buff1To[20:16]),
+	.AW(rdBff3ToBr),
+	.DW(dataBff3ToBr),
+	
+	.DR1(data1ToBff2),
+	.DR2(data2ToBff2)
+);
+
+
+wire [31:0]data1ToAlu;
+wire [31:0]data2ToAlu;
+wire [4:0]rdToBff3;
+wire [5:0]functToAlu;
+bufferb buff2 (
+	.clk(clk),
+	.funct(aluctlToBff2),
+	.entrada1(data1ToBff2),
+	.entrada2(data2ToBff2),
+	.rd(buff1To[15:11]),
+
+	.functS(functToAlu),
+	.salida1(data1ToAlu),
+	.salida2(data2ToAlu),
+	.rds(rdToBff3)
+);
+
+wire [31:0]aluToBuff3;
+wire zToBuff3;
+alu alu1 (
+	.op1(data1ToAlu),
+	.op2(data2ToAlu),
+	.selector(functToAlu[3:0]),
+	
+	.salida(aluToBuff3),
+	.zflag(zToBuff3)
+);
+
+wire zToSalida;
+bufferc buff3 (
+	.clk(clk),
+	.zflag(zToBuff3),
+	.entrada(aluToBuff3),
+	.rd(rdToBff3),
+	
+	.zflags(zf),
+	.salida(dataBff3ToBr),
+	.rds(rdBff3ToBr)
+);
+
+assign resultado = dataBff3ToBr;
+
+endmodule
