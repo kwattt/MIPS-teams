@@ -1,6 +1,7 @@
 module mips (
 	
-	input clk
+	input clk,
+	output salida
 	
 );
 
@@ -122,5 +123,7 @@ alu alu1
 	.salida(ban_alu)
 
 );
+
+assign salida = ban_alu;
  
 endmodule 

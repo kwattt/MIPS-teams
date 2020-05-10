@@ -9,27 +9,27 @@ begin
 	if(Op==3'b010) //2 func based
 	begin
 		if(entrada[3:0] == 0) begin //sum
-			salida <= 4'b0010;
+			salida=4'b0010;
 		end
 
 		else if(entrada[3:0] == 4'b0010) begin //resta
-			salida <= 4'b0110;
+			salida = 4'b0110;
 		end
 
 		else if(entrada[3:0] == 4'b0100) begin //and
-			salida <= 4'b0000;       
+			salida = 4'b0000;       
 		end
 		
 		else if(entrada[3:0] == 4'b0101) begin //or
-			salida <= 4'b0001;
+			salida = 4'b0001;
 		end
 		
 		else if(entrada[3:0] == 4'b1100) begin //lessThan
-			salida <= 4'b0111;
+			salida = 4'b0111;
 		end
 
 		else if(entrada[3:0] == 4'b0010) begin // multiplication
-			salida <= 4'b1000;
+			salida = 4'b1000;
 		end
 
 		else if(entrada[3:0] == 4'b1010) begin //division

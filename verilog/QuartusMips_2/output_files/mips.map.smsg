@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at controlAlu.v(7): always construct contains both blocking and non-blocking assignments File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
+Warning (10268): Verilog HDL information at alu.v(13): always construct contains both blocking and non-blocking assignments File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 13

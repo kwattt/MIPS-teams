@@ -7,6 +7,7 @@ module UnidadControl (
 );
 
 always@* begin
+
 	if(Entrada == 6'b000000) //R basic
 	begin
 		RegDst <= 1; // Guarda en reg

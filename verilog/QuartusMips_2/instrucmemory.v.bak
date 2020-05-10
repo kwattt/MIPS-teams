@@ -7,8 +7,10 @@ module instrucmemory(
 
 reg [7:0]mem[0:128];
 
-initial begin
+initial
+begin
 	$readmemb("instrucciones.txt", mem);
+	#10;
 end
 
 always @*

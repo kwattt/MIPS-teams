@@ -2,8 +2,9 @@
 module mips_tb;
 
     reg clk = 0;
+    wire salida;
 
-    mips mipsx(clk);
+    mips mipsx(clk, salida);
     always begin
         #10; 
         clk <= ~clk;
