@@ -13,8 +13,6 @@ module BancoRegistros (
 reg [31:0]AlmacenReg[0:31];
 
 
-`timescale 1ns/1ns
-
 /*initial
 begin
 	$readmemb("C:\\Computacion\\almacenBr.txt", AlmacenReg,0,31);

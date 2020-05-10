@@ -5,9 +5,7 @@ module instrucmemory(
 
 );
 
-`timescale 1ns/1ns
-
-	reg [7:0]mem[0:128];
+reg [7:0]mem[0:128];
 
 
 initial
