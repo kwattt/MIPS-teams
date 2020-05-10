@@ -14,37 +14,52 @@ pc pcounter
 );
 
 wire[31:0]instr_buffer;
+
 instrucmemory instrucmemory1
 (
 	.direccion(pc_istruc),
 	.salida_datos(instr_buffer)
 );
 
+
+
 wire[31:0]buffer1;
+
 buffer1 bufferA
 (
  	.clk(clk),
 	.entrada(instr_buffer),
-	.op(buffer1[31:26]), 
-	.rs(buffer1[25:21]),
-	.rt(buffer1[20:16]),
-	.rd(buffer1[15:11]),
-	.sh(),
-	.func(buffer1[5:0])
+    .salida(buffer1)
 );
+
+wire[31:26]opcode;
+wire[25:21]read1;
+wire[20:16]read2;
+wire[15:11]rd;
+wire[5:0]func;
+wire [15:11]_writereg;
+
+assign opcode = buffer1[31:26];
+assign read1 = buffer1[25:21];
+assign read2 = buffer1[20:16];
+assign _writereg = buffer1[15:11];
+assign func = buffer1[5:0];
 
 wire buffer2_ban;
 wire[31:0]ban_alu;
 wire[4:0]ban_buffer;
+
 wire[31:0]data1_beffer2;
 wire[31:0]data2_beffer2;
-wire buf2_ban;
+
+
+wire [15:11]writereg;
 BancoRegistros Br(
 
-	.Regwrite(buf2_ban),
-	.ReadReg1(buffer1[25:21]),
-	.ReadReg2(buffer1[20:16]),
-	.WriteReg(ban_buffer),
+	.Regwrite(buffer2_ban),
+	.ReadReg1(read1),
+	.ReadReg2(read2),
+	.WriteReg(writereg),
 	.WriteData(ban_alu), 
 	
 	.ReadData1(data1_beffer2), 
@@ -52,36 +67,43 @@ BancoRegistros Br(
 );
 
 wire[2:0]AluOP_buffer2;
-wire RegDsr_buffer2;
+wire RegWrite_buffer2;
+
 UnidadControl control
 (
-	.Entrada(buffer1[31:26]),
-	.RegDsr(RegDsr_buffer2),
+	.Entrada(opcode),
+	.RegDst(RegWrite_buffer2),
 	.AluOP(AluOP_buffer2)
-
 );
 
 wire[31:0]Data2;
 wire[31:0]Data1;
 wire[5:0]data_alucont;
-wire[2:0]buffer2_aluco;
+
+wire[2:0]buffer2_aluco; // ALUOP 
+
+
 
 buffer2 bufferb
 (
 	.clk(clk),
+
 	.AluOP(AluOP_buffer2),
+
 	.data1(data1_beffer2),
 	.data2(data2_beffer2),
-	.en1(buffer1[15:11]),
-	.en2(buffer1[5:0]),
-	.RegDsr(RegDsr_buffer2),
 
-	
+	.en1(_writereg),
+	.en2(func),
+	.RegWrite(RegWrite_buffer2),
+
 	.salida_alu(buffer2_aluco),
-	.salida_RegDsr(buffer2_ban),
+	.salida_RegWrite(buffer2_ban),
+
 	.data1_salida(Data1),
 	.data2_salida(Data2),
-	.salida1(ban_buffer),
+
+	.salida1(writereg),
 	.salida2(data_alucont)
 );
 
@@ -93,7 +115,6 @@ controlAlu controlalu1
 	.salida(coalu_alu)
 );
 
-
 alu alu1
 (
 	.Data1(Data1),
@@ -103,9 +124,6 @@ alu alu1
 
 );
 
-
 assign salida = ban_alu;
  
-
-
 endmodule 
