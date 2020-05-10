@@ -1,0 +1,23 @@
+module instrucmemory (
+	input [7:0]AR1, // Address Read
+	
+	output reg [31:0]DR1 // Data Read
+);
+
+
+reg [7:0]almacen[0:128];
+
+`timescale 1ns/1ns
+initial
+begin
+	/*$readmemb("C:\\Computacion\\almacen.txt", almacen,0,35);*/
+	#10;
+end
+
+always @*
+begin
+	DR1 <= {almacen[AR1], almacen[AR1+1], almacen[AR1+2], almacen[AR1+3]};
+end
+
+
+endmodule
