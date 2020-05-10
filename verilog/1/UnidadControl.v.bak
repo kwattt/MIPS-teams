@@ -1,0 +1,10 @@
+module UnidadControl (
+
+	input [5:0]entrada,
+
+	output [0:0]RegDst,
+	output [0:0]AluSrc,
+	output [2:0] AluOP,
+	
+	);
+	

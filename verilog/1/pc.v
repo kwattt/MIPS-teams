@@ -1,0 +1,20 @@
+module pc (
+	input clk,
+	
+	output reg [7:0]salida
+);
+
+
+initial
+begin
+	salida <= +4;
+end
+
+
+always@(posedge clk)
+begin
+	salida <= salida+7'd4;
+end
+
+
+endmodule
