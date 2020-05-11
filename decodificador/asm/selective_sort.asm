@@ -1,24 +1,24 @@
 main:
-    li $t5 85
-    li $t4 33
-    li $t3 94
-    li $t2 55
-    li $t0 105
-    li $t6 58
-    li $t7 43
-    li $t8 39
-    li $t1 69
+    li $t5, 85
+    li $t4, 33
+    li $t3, 94
+    li $t2, 55
+    li $t0, 105
+    li $t6, 58
+    li $t7, 43
+    li $t8, 39
+    li $t1, 69
 
-    sw $t5 0($zero) 
-    sw $t4 1($zero) 
-    sw $t3 2($zero) 
-    sw $t2 3($zero) 
-    sw $t1 4($zero) 
-    sw $t6 5($zero) 
-    sw $t7 6($zero) 
-    sw $t8 7($zero) 
-    sw $t0 8($zero) 
-    li $t9 8 # total de nums
+    sw $t5, 0($zero) 
+    sw $t4, 1($zero) 
+    sw $t3, 2($zero) 
+    sw $t2, 3($zero) 
+    sw $t1, 4($zero) 
+    sw $t6, 5($zero) 
+    sw $t7, 6($zero) 
+    sw $t8, 7($zero) 
+    sw $t0, 8($zero) 
+    li $t9, 8 # total de nums
 
 .sort:
     add $t0 $zero $zero # i = 0

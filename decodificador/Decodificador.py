@@ -18,11 +18,12 @@ jpositions = []  # Posiciones para saltos/brancheos
 
 # Funciones para manejo de binarios
 
-def dbin(number, clen, c2 = 0):
+
+def dbin(number, clen, c2=0):
     if number < 0:
-        return bin(number % (1<<clen))[2::]
+        return bin(number % (1 << clen))[2::]
     else: 
-        return "0" * (clen - len(bin(number % (1<<clen)) [2::])) + bin(number % (1<<clen)) [2::]
+        return "0" * (clen - len(bin(number % (1 << clen))[2::])) + bin(number % (1 << clen))[2::]
 
 # Selección de archivo
 
@@ -46,8 +47,12 @@ def torealcode():
     cline = 1
 
     for line in lines:
-        strippedline = line.strip()
+        strippedline = list(line.strip())
+
         if strippedline:
+            while("," in strippedline):  # Remover las comas de la linea
+                strippedline.remove(",")
+            strippedline = "".join(strippedline)
             rlines.append([strippedline, cline])
 
         cline += 1
