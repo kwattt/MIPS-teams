@@ -8,6 +8,5 @@ El equipo que organiza este proyecto, somos:
 
 
 ### Status del proyecto **Fase 1**</div>
-![Diagrama Proyecto 1](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/drawio/Fase1(R%20no%20buffer).png?token=AKZ6B6GMKHM4ILXKBS47XF26XW5GG)
 ![Diagrama 2 Proyecto 1](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/drawio/Fase1(Buffer).png?token=AKZ6B6CJBEEIHXWLMN7D5426XX2GG)
-
+![RTL Fase 1](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/quartusFase1.png?token=AKZ6B6A6N4BLJD64DHVUQV26YC6BO)
