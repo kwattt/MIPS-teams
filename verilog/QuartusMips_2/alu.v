@@ -2,7 +2,8 @@ module alu (
 	input [31:0]Data1,
 	input [31:0]Data2,
 	input [3:0]selector,
-	output reg [31:0]salida
+	output reg [31:0]salida,
+	output reg zflag
 
 );
 

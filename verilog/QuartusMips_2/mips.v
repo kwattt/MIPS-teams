@@ -27,8 +27,10 @@ wire[31:0]buffer1;
 buffer1 bufferA
 (
  	.clk(clk),
+	//.entr_pc()
 	.entrada(instr_buffer),
-    .salida(buffer1)
+   .salida(buffer1)
+	//.sal_pc()
 );
 
 wire[31:26]opcode;

@@ -1,5 +1,5 @@
-Analysis & Synthesis report for mips
-Sat May 09 23:12:08 2020
+Analysis & Elaboration report for mips
+Tue May 12 22:59:29 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -7,16 +7,15 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Synthesis Summary
-  3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "buffer1:bufferA"
- 10. Analysis & Synthesis Messages
- 11. Analysis & Synthesis Suppressed Messages
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Port Connectivity Checks: "alu:alu1"
+  6. Port Connectivity Checks: "buffer2:bufferb"
+  7. Port Connectivity Checks: "UnidadControl:control"
+  8. Port Connectivity Checks: "buffer1:bufferA"
+  9. Analysis & Elaboration Messages
+ 10. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -39,89 +38,22 @@ refer to the applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                              ;
-+-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat May 09 23:12:08 2020       ;
-; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name               ; mips                                        ;
-; Top-level Entity Name       ; mips                                        ;
-; Family                      ; MAX V                                       ;
-; Total logic elements        ; 0                                           ;
-; Total pins                  ; 1                                           ;
-; Total virtual pins          ; 0                                           ;
-; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
-+-----------------------------+---------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                              ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                           ; Setting            ; Default Value      ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Top-level entity name                                            ; mips               ; mips               ;
-; Family name                                                      ; MAX V              ; Cyclone V          ;
-; Use smart compilation                                            ; Off                ; Off                ;
-; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
-; Enable compact report table                                      ; Off                ; Off                ;
-; Restructure Multiplexers                                         ; Auto               ; Auto               ;
-; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
-; Preserve fewer node names                                        ; On                 ; On                 ;
-; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
-; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                         ; Auto               ; Auto               ;
-; Safe State Machine                                               ; Off                ; Off                ;
-; Extract Verilog State Machines                                   ; On                 ; On                 ;
-; Extract VHDL State Machines                                      ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
-; Parallel Synthesis                                               ; On                 ; On                 ;
-; NOT Gate Push-Back                                               ; On                 ; On                 ;
-; Power-Up Don't Care                                              ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
-; Remove Duplicate Registers                                       ; On                 ; On                 ;
-; Ignore CARRY Buffers                                             ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
-; Ignore LCELL Buffers                                             ; Off                ; Off                ;
-; Ignore SOFT Buffers                                              ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
-; Optimization Technique                                           ; Balanced           ; Balanced           ;
-; Carry Chain Length                                               ; 70                 ; 70                 ;
-; Auto Carry Chains                                                ; On                 ; On                 ;
-; Auto Open-Drain Pins                                             ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
-; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
-; Allow Synchronous Control Signals                                ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
-; Auto Resource Sharing                                            ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
-; Report Parameter Settings                                        ; On                 ; On                 ;
-; Report Source Assignments                                        ; On                 ; On                 ;
-; Report Connectivity Checks                                       ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
-; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
-; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
-; HDL message level                                                ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
-; Clock MUX Protection                                             ; On                 ; On                 ;
-; Block Design Naming                                              ; Auto               ; Auto               ;
-; Synthesis Effort                                                 ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
-; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
-+------------------------------------------------------------------+--------------------+--------------------+
++-----------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                              ;
++-------------------------------+---------------------------------------------+
+; Analysis & Elaboration Status ; Failed - Tue May 12 22:59:29 2020           ;
+; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                 ; mips                                        ;
+; Top-level Entity Name         ; mips                                        ;
+; Family                        ; Cyclone V                                   ;
+; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
+; Total registers               ; N/A until Partition Merge                   ;
+; Total pins                    ; N/A until Partition Merge                   ;
+; Total virtual pins            ; N/A until Partition Merge                   ;
+; Total block memory bits       ; N/A until Partition Merge                   ;
+; Total PLLs                    ; N/A until Partition Merge                   ;
+; Total DLLs                    ; N/A until Partition Merge                   ;
++-------------------------------+---------------------------------------------+
 
 
 +------------------------------------------+
@@ -129,7 +61,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
+; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
@@ -140,158 +72,233 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                            ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                              ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------+---------+
-; instrucciones.txt                ; yes             ; User File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucciones.txt ;         ;
-; bancoreg.txt                     ; yes             ; User File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/bancoreg.txt      ;         ;
-; UnidadControl.v                  ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v   ;         ;
-; pc.v                             ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/pc.v              ;         ;
-; mips.v                           ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v            ;         ;
-; instrucmemory.v                  ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v   ;         ;
-; controlAlu.v                     ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v      ;         ;
-; buffer2.v                        ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer2.v         ;         ;
-; buffer1.v                        ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer1.v         ;         ;
-; BancoRegistros.v                 ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v  ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v             ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Elaboration Settings                                                                                           ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; mips               ; mips               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Total logic elements                        ; 0     ;
-;     -- Combinational with no register       ; 0     ;
-;     -- Register only                        ; 0     ;
-;     -- Combinational with a register        ; 0     ;
-;                                             ;       ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- 2 input functions                    ; 0     ;
-;     -- 1 input functions                    ; 0     ;
-;     -- 0 input functions                    ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;     -- qfbk mode                            ; 0     ;
-;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-; I/O pins                                    ; 1     ;
-+---------------------------------------------+-------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:alu1"                                                                                                 ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; zflag ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |mips                      ; 0 (0)       ; 0            ; 0          ; 1    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |mips               ; mips        ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "buffer2:bufferb"                                                                                                                                                 ;
++-----------------+---------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type    ; Severity         ; Details                                                                                                                                      ;
++-----------------+---------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; salida_alu      ; Unknown ; Critical Warning ; Named port was not declared by the instantiated entity                                                                                       ;
+; salida_RegWrite ; Unknown ; Critical Warning ; Named port was not declared by the instantiated entity                                                                                       ;
+; sing_ex         ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; add_pc          ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; RegDst          ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; ALUSrc          ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; Branch          ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; MemRead         ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; MemWrite        ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; MemtoReg        ; Input   ; Warning          ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; sal_RegWrite    ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_MemtoReg    ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_MemWrite    ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_MemRead     ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_Branch      ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_AluOP       ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_ALUSrc      ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_RegDst      ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_addPc       ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; sal_singEx      ; Output  ; Warning          ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-----------------+---------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UnidadControl:control"                                                                                       ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                  ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; ALUsrc   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; Branch   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; MemRead  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; MemtoReg ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; RegWrite ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "buffer1:bufferA"                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; salida[10..6] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "buffer1:bufferA"                                                                                                                                      ;
++---------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                                                                                      ;
++---------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; salida[10..6] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; entr_pc       ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; sal_pc        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++---------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------+
-; Analysis & Synthesis Messages ;
-+-------------------------------+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Synthesis
+Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat May 09 23:11:51 2020
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
+    Info: Processing started: Tue May 12 22:59:04 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file unidadcontrol.v
-    Info (12023): Found entity 1: UnidadControl File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 1
+    Info (12023): Found entity 1: UnidadControl File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file pc.v
-    Info (12023): Found entity 1: pc File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/pc.v Line: 1
+    Info (12023): Found entity 1: pc File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/pc.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mips_tb.v
-    Info (12023): Found entity 1: mips_tb File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 2
+    Info (12023): Found entity 1: mips_tb File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file mips.v
-    Info (12023): Found entity 1: mips File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 1
+    Info (12023): Found entity 1: mips File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file instrucmemory.v
-    Info (12023): Found entity 1: instrucmemory File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 2
+    Info (12023): Found entity 1: instrucmemory File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file controlalu.v
-    Info (12023): Found entity 1: controlAlu File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 1
+    Info (12023): Found entity 1: controlAlu File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer2.v
-    Info (12023): Found entity 1: buffer2 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer2.v Line: 1
+    Info (12023): Found entity 1: buffer2 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer2.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer1.v
-    Info (12023): Found entity 1: buffer1 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer1.v Line: 1
+    Info (12023): Found entity 1: buffer1 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer1.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file bancoregistros.v
-    Info (12023): Found entity 1: BancoRegistros File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v Line: 1
+    Info (12023): Found entity 1: BancoRegistros File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: alu File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 1
+    Info (12023): Found entity 1: alu File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sing_ext.v
+    Info (12023): Found entity 1: Sing_ext File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Sing_ext.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file shift_left.v
+    Info (12023): Found entity 1: Shift_left File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Shift_left.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file buffer3.v
+    Info (12023): Found entity 1: buffer3 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer3.v Line: 1
 Info (12127): Elaborating entity "mips" for the top level hierarchy
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pcounter" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 13
-Info (12128): Elaborating entity "instrucmemory" for hierarchy "instrucmemory:instrucmemory1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 21
-Warning (10850): Verilog HDL warning at instrucmemory.v(11): number of words (24) in memory file does not match the number of elements in the address range [0:128] File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 11
-Warning (10855): Verilog HDL warning at instrucmemory.v(10): initial value for variable mem should be constant File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 10
-Warning (10030): Net "mem" at instrucmemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 8
-Info (12128): Elaborating entity "buffer1" for hierarchy "buffer1:bufferA" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 32
-Info (12128): Elaborating entity "BancoRegistros" for hierarchy "BancoRegistros:Br" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 66
-Info (12128): Elaborating entity "UnidadControl" for hierarchy "UnidadControl:control" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 76
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(10): inferring latch(es) for variable "RegDst", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(10): inferring latch(es) for variable "AluOP", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Info (10041): Inferred latch for "AluOP[0]" at UnidadControl.v(10) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Info (10041): Inferred latch for "AluOP[1]" at UnidadControl.v(10) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Info (10041): Inferred latch for "AluOP[2]" at UnidadControl.v(10) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Info (10041): Inferred latch for "RegDst" at UnidadControl.v(10) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 10
-Info (12128): Elaborating entity "buffer2" for hierarchy "buffer2:bufferb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 107
-Info (12128): Elaborating entity "controlAlu" for hierarchy "controlAlu:controlalu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 115
-Warning (10240): Verilog HDL Always Construct warning at controlAlu.v(7): inferring latch(es) for variable "salida", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
-Info (10041): Inferred latch for "salida[0]" at controlAlu.v(9) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[1]" at controlAlu.v(9) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[2]" at controlAlu.v(9) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[3]" at controlAlu.v(9) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 124
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 5
-Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 0 output pins
-Info (144001): Generated suppressed messages file C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/output_files/mips.map.smsg
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4713 megabytes
-    Info: Processing ended: Sat May 09 23:12:09 2020
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:25
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pcounter" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 13
+Info (12128): Elaborating entity "instrucmemory" for hierarchy "instrucmemory:instrucmemory1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 21
+Warning (10850): Verilog HDL warning at instrucmemory.v(11): number of words (24) in memory file does not match the number of elements in the address range [0:128] File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 11
+Warning (10855): Verilog HDL warning at instrucmemory.v(10): initial value for variable mem should be constant File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 10
+Warning (10030): Net "mem" at instrucmemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 8
+Info (12128): Elaborating entity "buffer1" for hierarchy "buffer1:bufferA" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 34
+Info (12128): Elaborating entity "BancoRegistros" for hierarchy "BancoRegistros:Br" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 68
+Info (12128): Elaborating entity "UnidadControl" for hierarchy "UnidadControl:control" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 78
+Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(15): inferring latch(es) for variable "RegDst", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(15): inferring latch(es) for variable "AluOP", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Warning (10034): Output port "ALUsrc" at UnidadControl.v(5) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 5
+Warning (10034): Output port "Branch" at UnidadControl.v(7) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 7
+Warning (10034): Output port "MemRead" at UnidadControl.v(8) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 8
+Warning (10034): Output port "MemtoReg" at UnidadControl.v(9) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 9
+Warning (10034): Output port "RegWrite" at UnidadControl.v(12) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 12
+Info (10041): Inferred latch for "AluOP[0]" at UnidadControl.v(15) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Info (10041): Inferred latch for "AluOP[1]" at UnidadControl.v(15) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Info (10041): Inferred latch for "AluOP[2]" at UnidadControl.v(15) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Info (10041): Inferred latch for "RegDst" at UnidadControl.v(15) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 15
+Info (12128): Elaborating entity "buffer2" for hierarchy "buffer2:bufferb" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 109
+Info (12128): Elaborating entity "controlAlu" for hierarchy "controlAlu:controlalu1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 117
+Warning (10240): Verilog HDL Always Construct warning at controlAlu.v(7): inferring latch(es) for variable "salida", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
+Info (10041): Inferred latch for "salida[0]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
+Info (10041): Inferred latch for "salida[1]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
+Info (10041): Inferred latch for "salida[2]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
+Info (10041): Inferred latch for "salida[3]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 126
+Warning (10034): Output port "zflag" at alu.v(8) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 8
+Error (12002): Port "salida_RegWrite" does not exist in macrofunction "bufferb" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 109
+Error (12002): Port "salida_alu" does not exist in macrofunction "bufferb" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 109
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (144001): Generated suppressed messages file C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/output_files/mips.map.smsg
+Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 14 warnings
+    Error: Peak virtual memory: 4793 megabytes
+    Error: Processing ended: Tue May 12 22:59:29 2020
+    Error: Elapsed time: 00:00:25
+    Error: Total CPU time (on all processors): 00:00:40
 
 
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/output_files/mips.map.smsg.
++--------------------------------------------+
+; Analysis & Elaboration Suppressed Messages ;
++--------------------------------------------+
+The suppressed messages can be found in C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/output_files/mips.map.smsg.
 
 
