@@ -7,6 +7,5 @@ El equipo que organiza este proyecto, somos:
 * Jiménez Vital Francisco
 
 
-### Status del proyecto **Fase 1**</div>
-![Diagrama 2 Proyecto 1](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/drawio/Fase1(Buffer).png?token=AKZ6B6CJBEEIHXWLMN7D5426XX2GG)
-![RTL Fase 1](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/quartusFase1.png?token=AKZ6B6A6N4BLJD64DHVUQV26YC6BO)
+### Status del proyecto **Fase 2**
+![Diagrama 2 Proyecto 2](https://raw.githubusercontent.com/kwattt/MIPS-teams/master/documentacion/drawio/Fase2.png?token=AKZ6B6C3EYFGWQGX2TAGSGK6Y4W44)
