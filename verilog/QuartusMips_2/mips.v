@@ -18,7 +18,7 @@ Mux1 Muxa(
 	.PcSrc(branch_mux1),
 	
 	.BResult(mux1_MuxJump)
-	
+
 );
 
 wire[31:0]buffer3_MuxJumpV;
@@ -36,10 +36,19 @@ Mux_J muxJ(
 ///////////////////////////////////
 wire[31:0]pc_istruc;
 
+wire [31:0]realpc;
+
+addpc pcAdd(
+    clk,
+    MuxJump_Pc,
+    32'd4,
+    realpc
+);
+
 pc pcounter
 (
 	.clk(clk),
-	.entrada(MuxJump_Pc),
+	.entrada(realpc),
 	
 	.salida(pc_istruc)
 );
@@ -59,7 +68,8 @@ instrucmemory instrucmemory1
 //////////////////////////////////
 
 wire[31:0]bufer1;
-wire[32:0]pc_buffer2;
+wire[31:0]pc_buffer2;
+
 buffer1 bufferA
 (
  	.clk(clk),
@@ -81,23 +91,23 @@ wire[20:16]rd;
 wire[15:11]_writereg;
 
 assign opcode = bufer1[31:26];
-assign tipoJ = buffer1[25:0];
+assign tipoJ = bufer1[25:0];
 assign read1 = bufer1[25:21];
 assign read2 = bufer1[20:16];
 assign sing = bufer1[15:0];
-assign rd= bufer1[15:11];
+assign rd= bufer1[20:16];
 //assign func = bufer1[5:0];
 assign _writereg = bufer1[15:11];
 
 
-wire[4:0] buffer4_ban;
+wire buffer4_ban;
 wire[31:0]data1_beffer2;
 wire[31:0]data2_beffer2;
 wire[31:0]mux4_banco; 
 wire[4:0]buffer4_bancoWR;
 
 BancoRegistros Br(
-
+	.clk(clk),
 	.Regwrite(buffer4_ban),
 	.ReadReg1(read1),
 	.ReadReg2(read2),
@@ -139,8 +149,7 @@ wire[25:0]ShiftJ_SingJ;
 
 Shift_left_J Shift2(
 	.entrada(tipoJ),
-	.salida(ShiftJ_SingJ),
-
+	.salida(ShiftJ_SingJ)
 );
 
 /////////////////////////////////
@@ -169,7 +178,6 @@ wire[5:0]data_alucont; //<------ No si halla falla en este cable.
 wire[31:0]buf2_shift;
 wire[2:0]buffer2_aluco;  // ALUOP 
 wire RWbuffer2_buffer3;    //RegWrite 
-wire MemReg_Buffer2_buffer3;
 wire MW_Buf2_buf3;				//memWrite
 wire MR_buf2_buf3;			//MemtoReg
 wire Br_buf2_buf3;		   //branch
@@ -185,7 +193,8 @@ wire Jump_buffer3;
 wire [31:0]JumpV_buffer3;
 
 assign buf2_shift = sing_buf2_mux2;
-assign data_alucont = sing_buf2_mux2;
+assign data_alucont = sing_buf2_mux2[5:0];
+wire MemReg_Buffer2_buffer4;
 
 buffer2 bufferb
 ( 	.clk(clk),
@@ -208,9 +217,9 @@ buffer2 bufferb
 
 	.sal_RegWrite(RWbuffer2_buffer3),
 	.sal_MemtoReg(MemReg_Buffer2_buffer4),
-	.sal_MemWrite(MW_Buf2_buf4),
+	.sal_MemWrite(MW_Buf2_buf3),
 	.sal_Jump(Jump_buffer3),
-	.sal_MemRead(MR_buf2_buf4),
+	.sal_MemRead(MR_buf2_buf3),
 	.sal_Branch(Br_buf2_buf3),
 	.sal_AluOP(buffer2_aluco),
 	.sal_ALUSrc(buffer2_mux2),
@@ -221,23 +230,22 @@ buffer2 bufferb
 	.data2_salida(Data2_buffer2_mux2),
 	.sal_singEx(sing_buf2_mux2),
 	.salida1(buffer2_mux3),
-	.salida2(buf2_mux3)
+	.salida2(sal2_mux)
 );
 //////////////////////////////////
 wire [31:0] shift_adder;
 
-Shift_left(
+Shift_left sleft(
 	.entrada(buf2_shift),
 	.salida(shift_adder)
-
 );
 //////////////////////////////////
 
 wire [31:0]mux2_alu;
 Mux2 Muxb (
 	.sing_ext1(sing_buf2_mux2),
-	.data0(buffer2_mux2),
-	.aluSRC(Data_buffer2_mux2),
+	.data0(Data2_buffer2_mux2),
+	.aluSRC(buffer2_mux2),
 	
 	.salida(mux2_alu)
 
@@ -247,8 +255,8 @@ Mux2 Muxb (
 wire [4:0] mux3_buf3;
 
 Mux3 Muxc(
-	.entrada1(buffer2_mux3),
-	.entrada0(sal2_mux),
+	.entrada1(sal2_mux),
+	.entrada0(buffer2_mux3),
 	.RegDst(buf2_mux3),
 	.salida(mux3_buf3)
 	
@@ -282,14 +290,17 @@ alu alu1
 //////////////////////////////////
 
 wire [31:0] BranchRes;
-Adder(
+Adder leadder(
 	.entrPc(buffer2_adder),
 	.entrShift(shift_adder),
-	.ResBranch( BranchRes)
+	.ResBranch(BranchRes)
 	
 );
 //////////////////////////////////
 
+wire [31:0]data2_Buffer3;
+wire [31:0]AluRes_buffer4;
+wire [31:0]AluRes_Adrees;
 assign AluRes_buffer4 = AluRes_Adrees;
 assign data2_Buffer3 = Data2_buffer2_mux2;
 wire RW_buffer3_buffer4;
@@ -298,7 +309,6 @@ wire MemWrite_Memory;
 wire MemRead_memory;
 wire Branch_BranchADD;
 wire zflag_Branch;
-wire [31:0]AluRes_Adrees;
 wire [31:0]Data2_Memory;
 wire [4:0]writeReg_buffer4;
 
@@ -306,7 +316,7 @@ buffer3 bufferc(
 
 	.clk(clk),
 	.RegWrite(RWbuffer2_buffer3),
-	.MemtoReg(MemReg_Buffer2_buffer3),
+	.MemtoReg(MemReg_Buffer2_buffer4),
 	.MemWrite(MW_Buf2_buf3),
 	.Jump(Jump_buffer3),
 	.MemRead(MR_buf2_buf3),
@@ -345,6 +355,7 @@ branch branch1(
  
 wire [31:0] MemRes_buffer4;
 MemoriaDato MemDato (
+	.clk(clk),
 	.Address(AluRes_Adrees),
 	.WriteData(Data2_Memory),
 	.MemRead(MemRead_memory),
@@ -382,7 +393,6 @@ Mux4  Mux_4(
 	.AluRes0(AluRes_Mux4),
 	.MemRes1(MemRes_Mux4),
 	.MemtoReg(memReg_Mux4),
-	
 	.WriteDat(mux4_banco)
 );
 	

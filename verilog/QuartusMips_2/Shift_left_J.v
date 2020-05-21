@@ -3,8 +3,6 @@ module Shift_left_J(
 	output[25:0] salida
 
 );
-assign 
-
-	salida = entrada<<25;
+assign salida = {entrada<<2};
 
 endmodule 

@@ -43,8 +43,28 @@ begin
 		else if(entrada[3:0] == 4'b0111) begin //nor
 			salida = 4'b1100;
 		end
-
 	end
+    else if (Op == 3'b000) begin 
+        salida = 4'b0010;
+        //$display("ALUCO_Suma");
+    end 
+    else if (Op == 3'b001) begin 
+        salida = 4'b0110;
+        //$display("ALUCO_Resta");
+    end 
+    else if (Op == 3'b011) begin 
+        salida = 4'b0000; 
+        //$display("ALUCO_AND");
+    end 
+    else if (Op == 3'b100) begin 
+        salida = 4'b0001; 
+        //$display("ALUCO_OR");
+    end 
+    else if (Op == 3'b101) begin 
+        salida = 4'b0111; 
+        //$display("ALUCO_SLT");
+    end 
+
 
 end
 

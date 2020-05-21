@@ -1,5 +1,5 @@
-Analysis & Elaboration report for mips
-Wed May 20 20:49:13 2020
+Analysis & Synthesis report for mips
+Wed May 20 23:41:05 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -7,17 +7,18 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "buffer4:bufferd"
-  6. Port Connectivity Checks: "buffer3:bufferc"
-  7. Port Connectivity Checks: "Mux2:Muxb"
-  8. Port Connectivity Checks: "buffer2:bufferb"
-  9. Port Connectivity Checks: "BancoRegistros:Br"
- 10. Port Connectivity Checks: "buffer1:bufferA"
- 11. Analysis & Elaboration Messages
- 12. Analysis & Elaboration Suppressed Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "addpc:pcAdd"
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
+ 13. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -40,42 +41,31 @@ refer to the applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                              ;
-+-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed May 20 20:49:13 2020       ;
-; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name                 ; mips                                        ;
-; Top-level Entity Name         ; mips                                        ;
-; Family                        ; Cyclone V                                   ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
-; Total registers               ; N/A until Partition Merge                   ;
-; Total pins                    ; N/A until Partition Merge                   ;
-; Total virtual pins            ; N/A until Partition Merge                   ;
-; Total block memory bits       ; N/A until Partition Merge                   ;
-; Total PLLs                    ; N/A until Partition Merge                   ;
-; Total DLLs                    ; N/A until Partition Merge                   ;
-+-------------------------------+---------------------------------------------+
-
-
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed May 20 23:41:05 2020       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; mips                                        ;
+; Top-level Entity Name           ; mips                                        ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 1                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                           ;
+; Analysis & Synthesis Settings                                                                                             ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
@@ -161,240 +151,250 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "buffer4:bufferd"                                                                                                                                                              ;
-+--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port         ; Type   ; Severity ; Details                                                                                                                                                               ;
-+--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; AluRes       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "AluRes[31..1]" will be connected to GND.                      ;
-; sal_RegWrite ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (5 bits) it drives.  The 4 most-significant bit(s) in the port expression will be connected to GND. ;
-+--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "buffer3:bufferc"                                                                                                                                ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                                                                                         ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Data2 ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "Data2[31..1]" will be connected to GND. ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+; alu.v                            ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v             ;         ;
+; Adder.v                          ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Adder.v           ;         ;
+; BancoRegistros.v                 ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v  ;         ;
+; Branch.v                         ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Branch.v          ;         ;
+; buffer1.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer1.v         ;         ;
+; buffer2.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer2.v         ;         ;
+; buffer3.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer3.v         ;         ;
+; buffer4.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer4.v         ;         ;
+; controlAlu.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v      ;         ;
+; instrucmemory.v                  ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v   ;         ;
+; mips.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v            ;         ;
+; Mux1.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux1.v            ;         ;
+; Mux2.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux2.v            ;         ;
+; Mux3.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux3.v            ;         ;
+; Mux4.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux4.v            ;         ;
+; pc.v                             ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/pc.v              ;         ;
+; Shift_left.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left.v      ;         ;
+; Sing_ext.v                       ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext.v        ;         ;
+; UnidadControl.v                  ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v   ;         ;
+; MemoriaDato.v                    ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v     ;         ;
+; Shift_left_J.v                   ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left_J.v    ;         ;
+; Sing_ext_J.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext_J.v      ;         ;
+; Mux_J.v                          ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux_J.v           ;         ;
+; bancoreg.txt                     ; yes             ; Auto-Found File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/bancoreg.txt      ;         ;
+; instrucciones.txt                ; yes             ; Auto-Found File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucciones.txt ;         ;
+; addpc.v                          ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/addpc.v           ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Mux2:Muxb"                                                                                                                                      ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                                                                                         ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; data0 ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "data0[31..1]" will be connected to GND. ;
-+-------+-------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimate of Logic utilization (ALMs needed) ; 0     ;
+;                                             ;       ;
+; Combinational ALUT usage for logic          ; 0     ;
+;     -- 7 input functions                    ; 0     ;
+;     -- 6 input functions                    ; 0     ;
+;     -- 5 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- <=3 input functions                  ; 0     ;
+;                                             ;       ;
+; Dedicated logic registers                   ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 1     ;
+;                                             ;       ;
+; Total DSP Blocks                            ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 1     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "buffer2:bufferb"                                                                                                                                                                                  ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port                ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; add_pc              ; Input  ; Warning  ; Input port expression (33 bits) is wider than the input port (32 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; sal_MemtoReg        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-; sal_MemWrite        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-; sal_MemRead         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-; data2_salida[31..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-; salida2             ; Output ; Warning  ; Output or bidir port (5 bits) is wider than the port expression (1 bits) it drives; bit(s) "salida2[20..17]" have no fanouts                                                       ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |mips                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 1    ; 0            ; |mips               ; mips        ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "BancoRegistros:Br"                                                                                                                                                                  ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type  ; Severity ; Details                                                                                                                                                                          ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Regwrite ; Input ; Warning  ; Input port expression (5 bits) is wider than the input port (1 bits) it drives.  The 4 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "buffer1:bufferA"                                                                                                                                                          ;
-+--------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                                                                                                                 ;
-+--------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; sal_pc ; Output ; Warning  ; Output or bidir port (32 bits) is smaller than the port expression (33 bits) it drives.  The 1 most-significant bit(s) in the port expression will be connected to GND. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------+
+; Port Connectivity Checks: "addpc:pcAdd"      ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; in2[31..3] ; Input ; Info     ; Stuck at GND ;
+; in2[1..0]  ; Input ; Info     ; Stuck at GND ;
+; in2[2]     ; Input ; Info     ; Stuck at VCC ;
++------------+-------+----------+--------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 1                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed May 20 20:49:02 2020
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips --analysis_and_elaboration
+    Info: Processing started: Wed May 20 23:40:48 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: alu File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 1
+    Info (12023): Found entity 1: alu File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file adder.v
-    Info (12023): Found entity 1: Adder File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Adder.v Line: 1
+    Info (12023): Found entity 1: Adder File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Adder.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file bancoregistros.v
-    Info (12023): Found entity 1: BancoRegistros File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v Line: 1
+    Info (12023): Found entity 1: BancoRegistros File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file branch.v
-    Info (12023): Found entity 1: branch File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Branch.v Line: 1
+    Info (12023): Found entity 1: branch File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Branch.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer1.v
-    Info (12023): Found entity 1: buffer1 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer1.v Line: 1
+    Info (12023): Found entity 1: buffer1 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer1.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer2.v
-    Info (12023): Found entity 1: buffer2 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer2.v Line: 1
+    Info (12023): Found entity 1: buffer2 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer2.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer3.v
-    Info (12023): Found entity 1: buffer3 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer3.v Line: 1
+    Info (12023): Found entity 1: buffer3 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer3.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer4.v
-    Info (12023): Found entity 1: buffer4 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/buffer4.v Line: 1
+    Info (12023): Found entity 1: buffer4 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer4.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file controlalu.v
-    Info (12023): Found entity 1: controlAlu File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 1
+    Info (12023): Found entity 1: controlAlu File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file instrucmemory.v
-    Info (12023): Found entity 1: instrucmemory File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 2
-Warning (10275): Verilog HDL Module Instantiation warning at mips.v(144): ignored dangling comma in List of Port Connections File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 144
+    Info (12023): Found entity 1: instrucmemory File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file mips.v
-    Info (12023): Found entity 1: mips File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 1
+    Info (12023): Found entity 1: mips File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mips_tb.v
-    Info (12023): Found entity 1: mips_tb File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 2
+    Info (12023): Found entity 1: mips_tb File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file mux1.v
-    Info (12023): Found entity 1: Mux1 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux1.v Line: 1
+    Info (12023): Found entity 1: Mux1 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux1.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux2.v
-    Info (12023): Found entity 1: Mux2 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux2.v Line: 1
+    Info (12023): Found entity 1: Mux2 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux2.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux3.v
-    Info (12023): Found entity 1: Mux3 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux3.v Line: 1
+    Info (12023): Found entity 1: Mux3 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux3.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux4.v
-    Info (12023): Found entity 1: Mux4 File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux4.v Line: 1
+    Info (12023): Found entity 1: Mux4 File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux4.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file pc.v
-    Info (12023): Found entity 1: pc File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/pc.v Line: 1
+    Info (12023): Found entity 1: pc File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/pc.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file shift_left.v
-    Info (12023): Found entity 1: Shift_left File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Shift_left.v Line: 1
+    Info (12023): Found entity 1: Shift_left File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file sing_ext.v
-    Info (12023): Found entity 1: Sing_ext File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Sing_ext.v Line: 1
+    Info (12023): Found entity 1: Sing_ext File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file unidadcontrol.v
-    Info (12023): Found entity 1: UnidadControl File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 1
+    Info (12023): Found entity 1: UnidadControl File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file memoriadato.v
-    Info (12023): Found entity 1: MemoriaDato File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 1
+    Info (12023): Found entity 1: MemoriaDato File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file shift_left_j.v
-    Info (12023): Found entity 1: Shift_left_J File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Shift_left_J.v Line: 1
+    Info (12023): Found entity 1: Shift_left_J File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left_J.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file sing_ext_j.v
-    Info (12023): Found entity 1: Sing_ext_J File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Sing_ext_J.v Line: 1
+    Info (12023): Found entity 1: Sing_ext_J File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext_J.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux_j.v
-    Info (12023): Found entity 1: Mux_J File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux_J.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(210): created implicit net for "MemReg_Buffer2_buffer4" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 210
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(211): created implicit net for "MW_Buf2_buf4" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 211
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(213): created implicit net for "MR_buf2_buf4" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 213
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(240): created implicit net for "Data_buffer2_mux2" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 240
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(293): created implicit net for "AluRes_buffer4" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 293
-Warning (10236): Verilog HDL Implicit Net warning at mips.v(294): created implicit net for "data2_Buffer3" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 294
-Critical Warning (10846): Verilog HDL Instantiation warning at mips.v(233): instance has no name File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 233
-Critical Warning (10846): Verilog HDL Instantiation warning at mips.v(290): instance has no name File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 290
+    Info (12023): Found entity 1: Mux_J File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux_J.v Line: 1
 Info (12127): Elaborating entity "mips" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at mips.v(188): truncated value with size 32 to match size of target (6) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 188
-Warning (10230): Verilog HDL assignment warning at mips.v(293): truncated value with size 32 to match size of target (1) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 293
-Warning (10230): Verilog HDL assignment warning at mips.v(294): truncated value with size 32 to match size of target (1) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 294
-Info (12128): Elaborating entity "Mux1" for hierarchy "Mux1:Muxa" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 22
-Info (12128): Elaborating entity "Mux_J" for hierarchy "Mux_J:muxJ" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 35
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pcounter" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 45
-Info (12128): Elaborating entity "instrucmemory" for hierarchy "instrucmemory:instrucmemory1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 58
-Warning (10850): Verilog HDL warning at instrucmemory.v(11): number of words (24) in memory file does not match the number of elements in the address range [0:128] File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 11
-Warning (10855): Verilog HDL warning at instrucmemory.v(10): initial value for variable mem should be constant File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 10
-Warning (10030): Net "mem" at instrucmemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 8
-Info (12128): Elaborating entity "buffer1" for hierarchy "buffer1:bufferA" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 71
-Info (12128): Elaborating entity "BancoRegistros" for hierarchy "BancoRegistros:Br" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 109
-Info (12128): Elaborating entity "UnidadControl" for hierarchy "UnidadControl:control" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 136
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "RegDst", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "AluOP", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "ALUsrc", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "Branch", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "MemRead", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "MemtoReg", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "RegWrite", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "Jump", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Warning (10240): Verilog HDL Always Construct warning at UnidadControl.v(20): inferring latch(es) for variable "MemWrite", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "MemWrite" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "Jump" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "RegWrite" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "MemtoReg" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "MemRead" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "Branch" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "ALUsrc" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "AluOP[0]" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "AluOP[1]" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "AluOP[2]" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (10041): Inferred latch for "RegDst" at UnidadControl.v(20) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v Line: 20
-Info (12128): Elaborating entity "Shift_left_J" for hierarchy "Shift_left_J:Shift2" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 144
-Info (12128): Elaborating entity "Sing_ext_J" for hierarchy "Sing_ext_J:Sing2" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 153
-Info (12128): Elaborating entity "Sing_ext" for hierarchy "Sing_ext:sing_ext1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 163
-Info (12128): Elaborating entity "buffer2" for hierarchy "buffer2:bufferb" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 225
-Info (12128): Elaborating entity "Shift_left" for hierarchy "Shift_left:comb_147" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 233
-Info (12128): Elaborating entity "Mux2" for hierarchy "Mux2:Muxb" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 244
-Info (12128): Elaborating entity "Mux3" for hierarchy "Mux3:Muxc" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 255
-Info (12128): Elaborating entity "controlAlu" for hierarchy "controlAlu:controlalu1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 265
-Warning (10240): Verilog HDL Always Construct warning at controlAlu.v(7): inferring latch(es) for variable "salida", which holds its previous value in one or more paths through the always construct File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
-Info (10041): Inferred latch for "salida[0]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[1]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[2]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (10041): Inferred latch for "salida[3]" at controlAlu.v(9) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 9
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 279
-Warning (10034): Output port "zflag" at alu.v(8) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/alu.v Line: 8
-Info (12128): Elaborating entity "Adder" for hierarchy "Adder:comb_148" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 290
-Info (12128): Elaborating entity "buffer3" for hierarchy "buffer3:bufferc" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 333
-Info (12128): Elaborating entity "branch" for hierarchy "branch:branch1" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 342
-Info (12128): Elaborating entity "MemoriaDato" for hierarchy "MemoriaDato:MemDato" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 355
-Warning (10036): Verilog HDL or VHDL warning at MemoriaDato.v(10): object "mem" assigned a value but never read File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 10
-Warning (10230): Verilog HDL assignment warning at MemoriaDato.v(15): truncated value with size 32 to match size of target (8) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 15
-Warning (10230): Verilog HDL assignment warning at MemoriaDato.v(16): truncated value with size 32 to match size of target (8) File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 16
-Warning (10034): Output port "MemRes" at MemoriaDato.v(8) has no driver File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 8
-Warning (12158): Entity "MemoriaDato" contains only dangling pins File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 355
-Info (12128): Elaborating entity "buffer4" for hierarchy "buffer4:bufferd" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 377
-Info (12128): Elaborating entity "Mux4" for hierarchy "Mux4:Mux_4" File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 387
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "pc_buffer2[32]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 62
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "pc_buffer2[32]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 62
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "pc_buffer2[32]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 62
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "pc_buffer2[32]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 62
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "pc_buffer2[32]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 62
-    Warning (12110): Net "buffer4_ban[4]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[3]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[2]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-    Warning (12110): Net "buffer4_ban[1]" is missing source, defaulting to GND File: C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 93
-Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (144001): Generated suppressed messages file C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 68 warnings
-    Info: Peak virtual memory: 4809 megabytes
-    Info: Processing ended: Wed May 20 20:49:13 2020
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:26
+Info (12128): Elaborating entity "Mux1" for hierarchy "Mux1:Muxa" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 22
+Info (12128): Elaborating entity "Mux_J" for hierarchy "Mux_J:muxJ" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 35
+Warning (12125): Using design file addpc.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: addpc File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/addpc.v Line: 1
+Info (12128): Elaborating entity "addpc" for hierarchy "addpc:pcAdd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 46
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pcounter" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 54
+Info (12128): Elaborating entity "instrucmemory" for hierarchy "instrucmemory:instrucmemory1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 67
+Warning (10850): Verilog HDL warning at instrucmemory.v(11): number of words (502) in memory file does not match the number of elements in the address range [0:1023] File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 11
+Warning (10855): Verilog HDL warning at instrucmemory.v(10): initial value for variable mem should be constant File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 10
+Warning (10030): Net "mem" at instrucmemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 8
+Info (12128): Elaborating entity "buffer1" for hierarchy "buffer1:bufferA" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 81
+Info (12128): Elaborating entity "BancoRegistros" for hierarchy "BancoRegistros:Br" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 119
+Info (12128): Elaborating entity "UnidadControl" for hierarchy "UnidadControl:control" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 146
+Info (12128): Elaborating entity "Shift_left_J" for hierarchy "Shift_left_J:Shift2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 153
+Info (12128): Elaborating entity "Sing_ext_J" for hierarchy "Sing_ext_J:Sing2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 162
+Info (12128): Elaborating entity "Sing_ext" for hierarchy "Sing_ext:sing_ext1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 172
+Info (12128): Elaborating entity "buffer2" for hierarchy "buffer2:bufferb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 234
+Info (12128): Elaborating entity "Shift_left" for hierarchy "Shift_left:sleft" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 241
+Info (12128): Elaborating entity "Mux2" for hierarchy "Mux2:Muxb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 252
+Info (12128): Elaborating entity "Mux3" for hierarchy "Mux3:Muxc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 263
+Info (12128): Elaborating entity "controlAlu" for hierarchy "controlAlu:controlalu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 273
+Warning (10240): Verilog HDL Always Construct warning at controlAlu.v(7): inferring latch(es) for variable "salida", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
+Info (10041): Inferred latch for "salida[0]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
+Info (10041): Inferred latch for "salida[1]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
+Info (10041): Inferred latch for "salida[2]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
+Info (10041): Inferred latch for "salida[3]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 287
+Info (12128): Elaborating entity "Adder" for hierarchy "Adder:leadder" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 298
+Info (12128): Elaborating entity "buffer3" for hierarchy "buffer3:bufferc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 343
+Info (12128): Elaborating entity "branch" for hierarchy "branch:branch1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 352
+Info (12128): Elaborating entity "MemoriaDato" for hierarchy "MemoriaDato:MemDato" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 366
+Info (12128): Elaborating entity "buffer4" for hierarchy "buffer4:bufferd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 388
+Info (12128): Elaborating entity "Mux4" for hierarchy "Mux4:Mux_4" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 397
+Info (144001): Generated suppressed messages file C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 5
+Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4807 megabytes
+    Info: Processing ended: Wed May 20 23:41:05 2020
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:25
 
 
-+--------------------------------------------+
-; Analysis & Elaboration Suppressed Messages ;
-+--------------------------------------------+
-The suppressed messages can be found in C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg.
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg.
 
 

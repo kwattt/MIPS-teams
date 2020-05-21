@@ -4,7 +4,6 @@ module Adder(
 	output[31:0] ResBranch
 );
 
-assign 
-	ResBranch = entrPc + entrShift;
+assign ResBranch = entrPc + entrShift;
 
 endmodule 
