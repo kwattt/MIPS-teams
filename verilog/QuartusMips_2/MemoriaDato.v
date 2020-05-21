@@ -1,6 +1,4 @@
 module MemoriaDato(
-    input clk,
-
     input [31:0]Address,
     input [31:0]WriteData,
     input MemWrite,
@@ -19,7 +17,7 @@ initial begin
     end
 end
 
-always@(posedge clk) begin
+always@* begin
     if(MemWrite == 1) mem[Address] <= WriteData;
     if(MemRead == 1) MemRes <= mem[Address];
 end

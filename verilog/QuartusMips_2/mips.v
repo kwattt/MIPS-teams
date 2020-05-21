@@ -107,7 +107,6 @@ wire[31:0]mux4_banco;
 wire[4:0]buffer4_bancoWR;
 
 BancoRegistros Br(
-	.clk(clk),
 	.Regwrite(buffer4_ban),
 	.ReadReg1(read1),
 	.ReadReg2(read2),
@@ -355,7 +354,6 @@ branch branch1(
  
 wire [31:0] MemRes_buffer4;
 MemoriaDato MemDato (
-	.clk(clk),
 	.Address(AluRes_Adrees),
 	.WriteData(Data2_Memory),
 	.MemRead(MemRead_memory),

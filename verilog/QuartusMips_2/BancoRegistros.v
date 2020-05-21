@@ -1,5 +1,4 @@
 module BancoRegistros (
-	input clk,
 	input [4:0]ReadReg1, 
 	input [4:0]ReadReg2,
 	input [4:0]WriteReg, 
@@ -22,7 +21,7 @@ end
 assign ReadData1 = AlmacenReg[ReadReg1];
 assign ReadData2 = AlmacenReg[ReadReg2];
 
-always @(posedge clk)
+always @*
 begin
     if(Regwrite == 1'b1) AlmacenReg[WriteReg] <= WriteData;
 end

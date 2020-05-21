@@ -39,47 +39,27 @@ begin
 	begin	
 		ALUsrc <= 1;
 		RegWrite <= 1;
-		AluOP <= 0;
 		$display("ADDI");
 	end
 
 	else if(Entrada == 6'b110001) //LW
 	begin
-        RegDst <= 0;
-        Jump <= 0;
         ALUsrc <= 1;
         MemtoReg <= 1;
         RegWrite <= 1;
         MemRead <= 1;
-        MemWrite <= 0;
-        Branch <= 0;
-        AluOP <= 0;
 		$display("LW");
 	end
 
 	else if (Entrada == 6'b101011) // SW
 	begin
-        RegDst <= 1'bX;
-        Jump <= 0;
         ALUsrc <= 1;
-        MemtoReg <= 1'bX;
-        RegWrite <= 0;
-        MemRead <= 0;
         MemWrite <= 1;
-        Branch <= 0;
-        AluOP <= 0;
 		$display("SW");
 	end
 
 	else if (Entrada == 6'b000100) // BEQ
 	begin
-		RegDst <= 1'bX;
-		Jump <= 0;
-		ALUsrc <= 1'b0;
-		MemtoReg <= 1'bx;
-		RegWrite <= 1'bx;
-		MemRead <= 1'bx;
-		MemWrite <= 1'bx;
 		Branch <= 1'b1;
 		AluOP <= 2'b01;
 		$display("BEQ");
@@ -95,15 +75,7 @@ begin
 
 	else if (Entrada == 6'b000010) // J
 	begin
-		RegDst <= 1'bX;
 		Jump <= 1;
-		ALUsrc <= 1;
-		MemtoReg <= 1;
-		RegWrite <= 1;
-		MemRead <= 1'bx;
-		MemWrite <= 1'bx;
-		Branch <= 1'b1;
-		AluOP <= 1;
 		$display("J");
 	end
 
