@@ -3,5 +3,7 @@ module Sing_ext(
 	output [31:0] salida
 
 );
-
+assign 
+  salida = (16'b0+entrada);
+ 
 endmodule 

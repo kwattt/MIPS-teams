@@ -12,10 +12,10 @@ reg [31:0]tmp;
 always @*
 begin
     case (selector)
-        4'b0000: salida <= Data1 & Data2;
-        4'b0001: salida <= Data1 | Data2;
-        4'b0010: salida <= Data1 + Data2;
-        4'b0110: salida <= Data1 - Data2;
+        4'b0000: salida <= Data1 & Data2; //and
+        4'b0001: salida <= Data1 | Data2; //or
+        4'b0010: salida <= Data1 + Data2; //suma
+        4'b0110: salida <= Data1 - Data2; //resta
 		4'b0111: salida = Data1 < Data2 ? 1:0;        
         4'b0101: salida <= Data1 ^ Data2; // XOR 
         4'b1100: salida <= ~(Data1 | Data2); // nor

@@ -1,5 +1,5 @@
 Flow report for mips
-Tue May 12 22:59:29 2020
+Wed May 13 22:49:36 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,10 +40,10 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Flow Failed - Tue May 12 22:59:29 2020      ;
+; Flow Status                 ; Successful - Wed May 13 22:49:35 2020       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; mips                                        ;
-; Top-level Entity Name       ; mips                                        ;
+; Top-level Entity Name       ; buffer4                                     ;
 ; Family                      ; Cyclone V                                   ;
 ; Device                      ; 5CGXFC7C7F23C8                              ;
 ; Timing Models               ; Final                                       ;
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/12/2020 22:59:05 ;
+; Start date & time ; 05/13/2020 22:49:21 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; mips                ;
 +-------------------+---------------------+
@@ -73,13 +73,14 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 193569102761568.158934234405880        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 193569102761568.158942816018456        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; buffer4     ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; buffer4     ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; buffer4     ; Top            ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --             ;
+; TOP_LEVEL_ENTITY                    ; buffer4                                ; mips          ; --          ; --             ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
 
@@ -88,8 +89,8 @@ refer to the applicable agreement for further details.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:25     ; 1.0                     ; 4793 MB             ; 00:00:40                           ;
-; Total                  ; 00:00:25     ; --                      ; --                  ; 00:00:40                           ;
+; Analysis & Elaboration ; 00:00:15     ; 1.0                     ; 4788 MB             ; 00:00:34                           ;
+; Total                  ; 00:00:15     ; --                      ; --                  ; 00:00:34                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
