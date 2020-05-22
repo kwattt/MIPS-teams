@@ -5,7 +5,7 @@ module instrucmemory(
 
 );
 
-reg [7:0]mem[0:128];
+reg [7:0]mem[0:1023];
 
 initial begin
 	$readmemb("instrucciones.txt", mem);

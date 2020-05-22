@@ -5,8 +5,8 @@ module BancoRegistros (
 	input [31:0]WriteData,
 	input Regwrite,
 	
-	output reg [31:0]ReadData1, 
-	output reg [31:0]ReadData2
+	output [31:0]ReadData1, 
+	output [31:0]ReadData2
 );
 
 reg [31:0]AlmacenReg[0:31];
@@ -18,14 +18,12 @@ begin
 	#10;
 end
 
+assign ReadData1 = AlmacenReg[ReadReg1];
+assign ReadData2 = AlmacenReg[ReadReg2];
+
 always @*
 begin
-	
-	AlmacenReg[WriteData] <= WriteData;
-	
-	ReadData1 <= AlmacenReg[ReadReg1];
-	ReadData2 <= AlmacenReg[ReadReg2];
-	
+    if(Regwrite == 1'b1) AlmacenReg[WriteReg] <= WriteData;
 end
 
 endmodule 

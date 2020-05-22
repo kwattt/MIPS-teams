@@ -1,7 +1,7 @@
-Analysis & Elaboration Status : Failed - Tue May 12 22:59:29 2020
+Analysis & Elaboration Status : Successful - Wed May 13 22:49:35 2020
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : mips
-Top-level Entity Name : mips
+Top-level Entity Name : buffer4
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A until Partition Merge
 Total registers : N/A until Partition Merge

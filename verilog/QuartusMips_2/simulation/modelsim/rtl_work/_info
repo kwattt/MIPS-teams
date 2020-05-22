@@ -1,0 +1,33 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/simulation/modelsim
+vMux2
+!s110 1589420409
+!i10b 1
+!s100 9=ne@lW:MXjkRhdo@F`OA2
+INFVb@PB2i]0bCfk^e6oOh2
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1589420177
+8C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux2.v
+FC:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux2.v
+L0 1
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1589420408.000000
+!s107 C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2|C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2/Mux2.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+C:/Users/danao/Desktop/PROYECTO/MIPS-teams/verilog/QuartusMips_2
+tCvgOpt 0
+n@mux2

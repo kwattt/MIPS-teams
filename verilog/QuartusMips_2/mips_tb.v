@@ -14,7 +14,7 @@ module mips_tb;
 
         $dumpvars(0, mips_tb);
 
-        #5000;
+        #50000;
 
         $finish;
     end
