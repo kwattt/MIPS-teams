@@ -3,7 +3,7 @@ main:
     li $t4, 22
     li $t3, 94
     li $t2, 55
-    li $t0, 105
+    li $t0, -1
     li $t6, 58
     li $t7, 43
     li $t8, 39
