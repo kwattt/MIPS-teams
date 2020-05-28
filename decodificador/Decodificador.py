@@ -15,6 +15,7 @@ scriptlines_1 = []  # Instrucciones convertidas a listas de python con parámetr
 scriptlines_2 = []  # Lista con posiciones correctas de salto/branch.
 scriptlines_3 = []  # Lista con parámetros corregidos.
 jpositions = []  # Posiciones para saltos/brancheos
+lpositions = []
 
 # Funciones para manejo de binarios
 
@@ -44,7 +45,7 @@ def torealcode():
     global rlines
 
     lines = cfile.readlines()
-    cline = 1
+    cline = 0
 
     for line in lines:
         strippedline = list(line.strip())
@@ -148,7 +149,7 @@ def toinstruction():
                     addinstruction(linex[1], ["or", "0", "0", rpam[1]])
 
                 elif rpam[0] == "li":
-                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]])
+                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]],1)
 
                 else:
                     print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
@@ -183,17 +184,17 @@ def toinstruction():
                         exit()
 
                 elif rpam[0] == "addi":
-                    addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]],1)
                 elif rpam[0] == "ori":
-                    addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]],1)
                 elif rpam[0] == "andi":
-                    addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]])
+                    addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]],1)
                 elif rpam[0] == "j":
                     addinstruction(linex[1], ["j", rpam[1]], 2)
                 elif rpam[0] == "or":
                     addinstruction(linex[1], ["or", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "beq":
-                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]], 1)
+                    addinstruction(linex[1], ["beq", rpam[1], rpam[2], rpam[3]],4)
                 elif rpam[0] == "add":
                     addinstruction(linex[1], ["add", rpam[2], rpam[3], rpam[1]])
                 elif rpam[0] == "slt":
@@ -222,16 +223,14 @@ def calculatepositions():
 
         if(fpam[-1] == ":"):
             scriptlines_2.append([line[0], ["nop"]])
-            jpositions.append([PC, fpam])
+            lpositions.append([PC, fpam[:-1]]) # .end
 
         else:
             if fpam == "beq":
                 scriptlines_2.append(line)
-                scriptlines_2.append([line[0], ["nop"]])
-                jpositions.append([PC, fpam, line[1][3], 0])
+                jpositions.append([PC, fpam, 0])
             else:
                 scriptlines_2.append(line)
-
 
 def removechars():
     global scriptlines_3
@@ -249,26 +248,30 @@ def removechars():
                 if dic.checkKey(pam, dic.registros):
                     templist.append(dic.registros[pam][0])
                 else:
-                    if pam[0] == ".":  # Ajustar posiciones de salto/brancheo
-                        for zon in jpositions:
-                            if pam == zon[1][:-1]:
-                                if line[1][0] == "beq":
-                                    for zonx in jpositions:
-                                        if zonx[1] == "beq":
-                                            if len(zonx) > 3:
-                                                if zonx[3] == 0:
-                                                    zonx[3] = 1
-                                                    jpositions[jpositions.index(zonx)] = zonx
-                                                    templist.append(zon[0] - zonx[0])
-                                                    break
-                                else:
-                                    templist.append(zon[0])
-                                    break
-                    else:
-                        print("> [ERROR] Ingresaste un parámetro inexistente en la linea %i (>%s) (esperados: %s)" % (line[0], pam, dic.funcs[line[1][0]]))
-                        exit()
-        scriptlines_3.append([line[0], templist])
 
+                    if pam[0] == ".":  # Ajustar posiciones de salto/brancheo
+
+                        if line[1][0] == "j":
+                            for lepos in lpositions:
+                                if lepos[1] == pam:
+                                    templist.append(lepos[0])
+                                    break
+
+                        elif line[1][0] == "beq":
+                            for zonx in jpositions:
+                                if zonx[2] == 0:
+                                    zonx[2] = 1
+                                    jpositions[jpositions.index(zonx)] = zonx
+                                    for lepos in lpositions:
+                                        if lepos[1] == pam:
+                                            templist.append(lepos[0] - zonx[0])
+                                            break
+                                    break
+                        else:
+                            print("> [ERROR] Ingresaste un parámetro inexistente en la linea %i (>%s) (esperados: %s)" % (line[0], pam, dic.funcs[line[1][0]]))
+                            exit()
+    
+        scriptlines_3.append([line[0], templist])
 # Funciones para el manejo de archivo
 
 
@@ -280,7 +283,7 @@ def tofile(arg):
 
     for i in range(0, bruh):
         tfile.write(arg[i * 8:(i * 8) + 8] + "\n")
-        print(arg[i * 8:(i * 8) + 8])
+        #print(arg[i * 8:(i * 8) + 8])
         ftotal += 1
 
 
@@ -304,7 +307,7 @@ def converttobinary():
     for line in scriptlines_3:
         linea = line[0]
         line = line[1]
-        print(line)
+        print("%d "%linea, line)
         binval = ''
         opcode = line[0].lower()
         if opcode in dic.funcs_rtype:
@@ -338,7 +341,7 @@ def converttobinary():
             else:  # Error raro?
                 print("Error no clasificado")
                 exit()
-        print(binval)
+        #print(binval)
         tofile(binval)
 
     closefile()
