@@ -1,6 +1,6 @@
 main:
     li $t5, 85
-    li $t4, 33
+    li $t4, 22
     li $t3, 94
     li $t2, 55
     li $t0, 105
@@ -35,7 +35,9 @@ main:
 
             # if arr[j] < arr[index]
             blt $t4, $t5 .change 
+
             j .addj
+
             .change: 
                 add $t2, $zero, $t3 # index = j
 
@@ -66,5 +68,3 @@ main:
     lw $t1, 6($zero)
     lw $t1, 7($zero)
     lw $t1, 8($zero)
-
-# based on https://www.geeksforgeeks.org/selection-sort/

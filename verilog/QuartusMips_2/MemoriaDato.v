@@ -13,13 +13,13 @@ reg [31:0]mem[31:0];
 integer i;
 initial begin
     for (i = 0; i < 32; i = i + 1) begin
-    mem[i] = i;
+    mem[i] <= 0;
     end
 end
 
 always@* begin
-    if(MemWrite == 1) mem[Address] <= WriteData;
-    if(MemRead == 1) MemRes <= mem[Address];
+    if(MemWrite == 1) mem[Address] = WriteData;
+    if(MemRead == 1) MemRes = mem[Address];
 end
 
 endmodule

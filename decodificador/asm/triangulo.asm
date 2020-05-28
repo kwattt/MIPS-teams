@@ -1,7 +1,7 @@
 .main:
-    li $t0 2 # lado 1
-    li $t1 35 # lado 2
-    li $t2 30 # lado 3
+    li $t0 5 # lado 1
+    li $t1 5 # lado 2
+    li $t2 5 # lado 3
     sub $t4 $t0 $t1
     sub $t5 $t0 $t2
     beq $t4 $zero .f1 

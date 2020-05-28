@@ -4,7 +4,7 @@ import Diccionarios as dic
 # Variables globales
 
 
-maxlines = 256  # Tamaño del archivo
+maxlines = 1024  # Tamaño del archivo
 ftotal = 1  # Conteo para el archivo
 tfile = None  # Archivo de salida
 
@@ -61,7 +61,7 @@ def torealcode():
 # Instrucciones
 
 
-def addinstruction(linex, params, nops=1):
+def addinstruction(linex, params, nops=2):
     scriptlines_1.append([linex, params])
     for __ in range(nops):
         scriptlines_1.append([linex, ["nop"]])
@@ -149,7 +149,7 @@ def toinstruction():
                     addinstruction(linex[1], ["or", "0", "0", rpam[1]])
 
                 elif rpam[0] == "li":
-                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]],1)
+                    addinstruction(linex[1], ["addi", "$zero", rpam[1], rpam[2]],2)
 
                 else:
                     print("> [ERROR] Nemonico no existente en la linea %i (esperados: %s)" % (linex[1], [rpam[0]]))
@@ -165,7 +165,7 @@ def toinstruction():
 
                         arg2 = str(reg.group(1))
                         arg1 = str(reg.group(2))
-                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2])
+                        addinstruction(linex[1], ["sw", "$" + arg1, rpam[1], arg2], 2)
                     else:
 
                         print("> [ERROR] No cumple con los parámetros esperados en la linea %i (esperados: %s)" % (linex[1], dic.funcs[rpam[0]]))
@@ -184,11 +184,11 @@ def toinstruction():
                         exit()
 
                 elif rpam[0] == "addi":
-                    addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]],1)
+                    addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]],2)
                 elif rpam[0] == "ori":
-                    addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]],1)
+                    addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]],2)
                 elif rpam[0] == "andi":
-                    addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]],1)
+                    addinstruction(linex[1], ["andi", rpam[2], rpam[1], rpam[3]],2)
                 elif rpam[0] == "j":
                     addinstruction(linex[1], ["j", rpam[1]], 2)
                 elif rpam[0] == "or":
