@@ -1,5 +1,5 @@
-Analysis & Synthesis report for mips
-Wed May 20 23:41:05 2020
+Analysis & Elaboration report for mips
+Fri May 22 20:37:03 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -7,18 +7,12 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Synthesis Summary
-  3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "addpc:pcAdd"
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
- 13. Analysis & Synthesis Suppressed Messages
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Port Connectivity Checks: "mips:mipsx|addpc:pcAdd"
+  6. Analysis & Elaboration Messages
+  7. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -41,36 +35,47 @@ refer to the applicable agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 20 23:41:05 2020       ;
-; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name                   ; mips                                        ;
-; Top-level Entity Name           ; mips                                        ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 0                                           ;
-; Total pins                      ; 1                                           ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++-----------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                              ;
++-------------------------------+---------------------------------------------+
+; Analysis & Elaboration Status ; Successful - Fri May 22 20:37:03 2020       ;
+; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                 ; mips                                        ;
+; Top-level Entity Name         ; mips_tb                                     ;
+; Family                        ; Cyclone V                                   ;
+; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
+; Total registers               ; N/A until Partition Merge                   ;
+; Total pins                    ; N/A until Partition Merge                   ;
+; Total virtual pins            ; N/A until Partition Merge                   ;
+; Total block memory bits       ; N/A until Partition Merge                   ;
+; Total PLLs                    ; N/A until Partition Merge                   ;
+; Total DLLs                    ; N/A until Partition Merge                   ;
++-------------------------------+---------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                             ;
+; Analysis & Elaboration Settings                                                                                           ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
-; Top-level entity name                                                           ; mips               ; mips               ;
+; Top-level entity name                                                           ; mips_tb            ; mips               ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -151,148 +156,25 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++----------------------------------------------------+
+; Port Connectivity Checks: "mips:mipsx|addpc:pcAdd" ;
++------------+-------+----------+--------------------+
+; Port       ; Type  ; Severity ; Details            ;
++------------+-------+----------+--------------------+
+; in2[31..3] ; Input ; Info     ; Stuck at GND       ;
+; in2[1..0]  ; Input ; Info     ; Stuck at GND       ;
+; in2[2]     ; Input ; Info     ; Stuck at VCC       ;
++------------+-------+----------+--------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
-; alu.v                            ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/alu.v             ;         ;
-; Adder.v                          ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Adder.v           ;         ;
-; BancoRegistros.v                 ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/BancoRegistros.v  ;         ;
-; Branch.v                         ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Branch.v          ;         ;
-; buffer1.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer1.v         ;         ;
-; buffer2.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer2.v         ;         ;
-; buffer3.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer3.v         ;         ;
-; buffer4.v                        ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/buffer4.v         ;         ;
-; controlAlu.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v      ;         ;
-; instrucmemory.v                  ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v   ;         ;
-; mips.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v            ;         ;
-; Mux1.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux1.v            ;         ;
-; Mux2.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux2.v            ;         ;
-; Mux3.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux3.v            ;         ;
-; Mux4.v                           ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux4.v            ;         ;
-; pc.v                             ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/pc.v              ;         ;
-; Shift_left.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left.v      ;         ;
-; Sing_ext.v                       ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext.v        ;         ;
-; UnidadControl.v                  ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/UnidadControl.v   ;         ;
-; MemoriaDato.v                    ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v     ;         ;
-; Shift_left_J.v                   ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Shift_left_J.v    ;         ;
-; Sing_ext_J.v                     ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext_J.v      ;         ;
-; Mux_J.v                          ; yes             ; User Verilog HDL File        ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux_J.v           ;         ;
-; bancoreg.txt                     ; yes             ; Auto-Found File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/bancoreg.txt      ;         ;
-; instrucciones.txt                ; yes             ; Auto-Found File              ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucciones.txt ;         ;
-; addpc.v                          ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/addpc.v           ;         ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimate of Logic utilization (ALMs needed) ; 0     ;
-;                                             ;       ;
-; Combinational ALUT usage for logic          ; 0     ;
-;     -- 7 input functions                    ; 0     ;
-;     -- 6 input functions                    ; 0     ;
-;     -- 5 input functions                    ; 0     ;
-;     -- 4 input functions                    ; 0     ;
-;     -- <=3 input functions                  ; 0     ;
-;                                             ;       ;
-; Dedicated logic registers                   ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 1     ;
-;                                             ;       ;
-; Total DSP Blocks                            ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 1     ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |mips                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 1    ; 0            ; |mips               ; mips        ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+----------------------------------------------+
-; Port Connectivity Checks: "addpc:pcAdd"      ;
-+------------+-------+----------+--------------+
-; Port       ; Type  ; Severity ; Details      ;
-+------------+-------+----------+--------------+
-; in2[31..3] ; Input ; Info     ; Stuck at GND ;
-; in2[1..0]  ; Input ; Info     ; Stuck at GND ;
-; in2[2]     ; Input ; Info     ; Stuck at VCC ;
-+------------+-------+----------+--------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-------------------+---------------------------------+
-; Type              ; Count                           ;
-+-------------------+---------------------------------+
-; boundary_port     ; 1                               ;
-;                   ;                                 ;
-; Max LUT depth     ; 0.00                            ;
-; Average LUT depth ; 0.00                            ;
-+-------------------+---------------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
-+-------------------------------+
-; Analysis & Synthesis Messages ;
-+-------------------------------+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Synthesis
+Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed May 20 23:40:48 2020
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
+    Info: Processing started: Fri May 22 20:36:49 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
@@ -343,58 +225,88 @@ Info (12021): Found 1 design units, including 1 entities, in source file sing_ex
     Info (12023): Found entity 1: Sing_ext_J File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Sing_ext_J.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mux_j.v
     Info (12023): Found entity 1: Mux_J File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/Mux_J.v Line: 1
-Info (12127): Elaborating entity "mips" for the top level hierarchy
-Info (12128): Elaborating entity "Mux1" for hierarchy "Mux1:Muxa" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 22
-Info (12128): Elaborating entity "Mux_J" for hierarchy "Mux_J:muxJ" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 35
+Info (12127): Elaborating entity "mips_tb" for the top level hierarchy
+Warning (10755): Verilog HDL warning at mips_tb.v(8): assignments to clk create a combinational loop File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 8
+Warning (10175): Verilog HDL warning at mips_tb.v(15): ignoring unsupported system task File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 15
+Warning (10175): Verilog HDL warning at mips_tb.v(19): ignoring unsupported system task File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 19
+Info (12128): Elaborating entity "mips" for hierarchy "mips:mipsx" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips_tb.v Line: 6
+Info (12128): Elaborating entity "Mux1" for hierarchy "mips:mipsx|Mux1:Muxa" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 22
+Info (12128): Elaborating entity "Mux_J" for hierarchy "mips:mipsx|Mux_J:muxJ" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 35
 Warning (12125): Using design file addpc.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: addpc File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/addpc.v Line: 1
-Info (12128): Elaborating entity "addpc" for hierarchy "addpc:pcAdd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 46
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pcounter" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 54
-Info (12128): Elaborating entity "instrucmemory" for hierarchy "instrucmemory:instrucmemory1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 67
+Info (12128): Elaborating entity "addpc" for hierarchy "mips:mipsx|addpc:pcAdd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 46
+Info (12128): Elaborating entity "pc" for hierarchy "mips:mipsx|pc:pcounter" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 54
+Info (12128): Elaborating entity "instrucmemory" for hierarchy "mips:mipsx|instrucmemory:instrucmemory1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 67
 Warning (10850): Verilog HDL warning at instrucmemory.v(11): number of words (502) in memory file does not match the number of elements in the address range [0:1023] File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 11
 Warning (10855): Verilog HDL warning at instrucmemory.v(10): initial value for variable mem should be constant File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 10
 Warning (10030): Net "mem" at instrucmemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/instrucmemory.v Line: 8
-Info (12128): Elaborating entity "buffer1" for hierarchy "buffer1:bufferA" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 81
-Info (12128): Elaborating entity "BancoRegistros" for hierarchy "BancoRegistros:Br" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 119
-Info (12128): Elaborating entity "UnidadControl" for hierarchy "UnidadControl:control" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 146
-Info (12128): Elaborating entity "Shift_left_J" for hierarchy "Shift_left_J:Shift2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 153
-Info (12128): Elaborating entity "Sing_ext_J" for hierarchy "Sing_ext_J:Sing2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 162
-Info (12128): Elaborating entity "Sing_ext" for hierarchy "Sing_ext:sing_ext1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 172
-Info (12128): Elaborating entity "buffer2" for hierarchy "buffer2:bufferb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 234
-Info (12128): Elaborating entity "Shift_left" for hierarchy "Shift_left:sleft" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 241
-Info (12128): Elaborating entity "Mux2" for hierarchy "Mux2:Muxb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 252
-Info (12128): Elaborating entity "Mux3" for hierarchy "Mux3:Muxc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 263
-Info (12128): Elaborating entity "controlAlu" for hierarchy "controlAlu:controlalu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 273
+Info (12128): Elaborating entity "buffer1" for hierarchy "mips:mipsx|buffer1:bufferA" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 81
+Info (12128): Elaborating entity "BancoRegistros" for hierarchy "mips:mipsx|BancoRegistros:Br" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 118
+Info (12128): Elaborating entity "UnidadControl" for hierarchy "mips:mipsx|UnidadControl:control" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 145
+Info (12128): Elaborating entity "Shift_left_J" for hierarchy "mips:mipsx|Shift_left_J:Shift2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 152
+Info (12128): Elaborating entity "Sing_ext_J" for hierarchy "mips:mipsx|Sing_ext_J:Sing2" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 161
+Info (12128): Elaborating entity "Sing_ext" for hierarchy "mips:mipsx|Sing_ext:sing_ext1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 171
+Info (12128): Elaborating entity "buffer2" for hierarchy "mips:mipsx|buffer2:bufferb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 233
+Info (12128): Elaborating entity "Shift_left" for hierarchy "mips:mipsx|Shift_left:sleft" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 240
+Info (12128): Elaborating entity "Mux2" for hierarchy "mips:mipsx|Mux2:Muxb" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 251
+Info (12128): Elaborating entity "Mux3" for hierarchy "mips:mipsx|Mux3:Muxc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 262
+Info (12128): Elaborating entity "controlAlu" for hierarchy "mips:mipsx|controlAlu:controlalu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 272
 Warning (10240): Verilog HDL Always Construct warning at controlAlu.v(7): inferring latch(es) for variable "salida", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 7
 Info (10041): Inferred latch for "salida[0]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
 Info (10041): Inferred latch for "salida[1]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
 Info (10041): Inferred latch for "salida[2]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
 Info (10041): Inferred latch for "salida[3]" at controlAlu.v(47) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/controlAlu.v Line: 47
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 287
-Info (12128): Elaborating entity "Adder" for hierarchy "Adder:leadder" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 298
-Info (12128): Elaborating entity "buffer3" for hierarchy "buffer3:bufferc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 343
-Info (12128): Elaborating entity "branch" for hierarchy "branch:branch1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 352
-Info (12128): Elaborating entity "MemoriaDato" for hierarchy "MemoriaDato:MemDato" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 366
-Info (12128): Elaborating entity "buffer4" for hierarchy "buffer4:bufferd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 388
-Info (12128): Elaborating entity "Mux4" for hierarchy "Mux4:Mux_4" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 397
+Info (12128): Elaborating entity "alu" for hierarchy "mips:mipsx|alu:alu1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 286
+Info (12128): Elaborating entity "Adder" for hierarchy "mips:mipsx|Adder:leadder" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 297
+Info (12128): Elaborating entity "buffer3" for hierarchy "mips:mipsx|buffer3:bufferc" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 342
+Info (12128): Elaborating entity "branch" for hierarchy "mips:mipsx|branch:branch1" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 351
+Info (12128): Elaborating entity "MemoriaDato" for hierarchy "mips:mipsx|MemoriaDato:MemDato" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 364
+Warning (10240): Verilog HDL Always Construct warning at MemoriaDato.v(21): inferring latch(es) for variable "MemRes", which holds its previous value in one or more paths through the always construct File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[0]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[1]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[2]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[3]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[4]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[5]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[6]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[7]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[8]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[9]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[10]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[11]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[12]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[13]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[14]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[15]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[16]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[17]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[18]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[19]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[20]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[21]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[22]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[23]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[24]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[25]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[26]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[27]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[28]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[29]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[30]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (10041): Inferred latch for "MemRes[31]" at MemoriaDato.v(21) File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/MemoriaDato.v Line: 21
+Info (12128): Elaborating entity "buffer4" for hierarchy "mips:mipsx|buffer4:bufferd" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 386
+Info (12128): Elaborating entity "Mux4" for hierarchy "mips:mipsx|Mux4:Mux_4" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 395
 Info (144001): Generated suppressed messages file C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.v Line: 5
-Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4807 megabytes
-    Info: Processing ended: Wed May 20 23:41:05 2020
-    Info: Elapsed time: 00:00:17
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 4778 megabytes
+    Info: Processing ended: Fri May 22 20:37:03 2020
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:25
 
 
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
++--------------------------------------------+
+; Analysis & Elaboration Suppressed Messages ;
++--------------------------------------------+
 The suppressed messages can be found in C:/Users/kwat/Documents/MEGA/uni/s_arq/MIPS-teams/verilog/QuartusMips_2/mips.map.smsg.
 
 

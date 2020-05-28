@@ -1,8 +1,11 @@
-|mips
-clk => clk.IN8
+|mips_tb
 
 
-|mips|Mux1:Muxa
+|mips_tb|mips:mipsx
+clk => clk.IN6
+
+
+|mips_tb|mips:mipsx|Mux1:Muxa
 ResBranch1[0] => BResult.DATAB
 ResBranch1[1] => BResult.DATAB
 ResBranch1[2] => BResult.DATAB
@@ -133,7 +136,7 @@ BResult[30] <= BResult.DB_MAX_OUTPUT_PORT_TYPE
 BResult[31] <= BResult.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Mux_J:muxJ
+|mips_tb|mips:mipsx|Mux_J:muxJ
 JumpV1[0] => Pc.DATAB
 JumpV1[1] => Pc.DATAB
 JumpV1[2] => Pc.DATAB
@@ -264,7 +267,7 @@ Pc[30] <= Pc.DB_MAX_OUTPUT_PORT_TYPE
 Pc[31] <= Pc.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|addpc:pcAdd
+|mips_tb|mips:mipsx|addpc:pcAdd
 clk => out[0]~reg0.CLK
 clk => out[1]~reg0.CLK
 clk => out[2]~reg0.CLK
@@ -395,7 +398,7 @@ out[30] <= out[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= out[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|pc:pcounter
+|mips_tb|mips:mipsx|pc:pcounter
 clk => ~NO_FANOUT~
 entrada[0] => ~NO_FANOUT~
 entrada[1] => ~NO_FANOUT~
@@ -463,7 +466,7 @@ salida[30] <= <GND>
 salida[31] <= <GND>
 
 
-|mips|instrucmemory:instrucmemory1
+|mips_tb|mips:mipsx|instrucmemory:instrucmemory1
 direccion[0] => ~NO_FANOUT~
 direccion[1] => ~NO_FANOUT~
 direccion[2] => ~NO_FANOUT~
@@ -530,7 +533,7 @@ salida_datos[30] <= <GND>
 salida_datos[31] <= <GND>
 
 
-|mips|buffer1:bufferA
+|mips_tb|mips:mipsx|buffer1:bufferA
 clk => sal_pc[0]~reg0.CLK
 clk => sal_pc[1]~reg0.CLK
 clk => sal_pc[2]~reg0.CLK
@@ -725,46 +728,7 @@ sal_pc[30] <= sal_pc[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sal_pc[31] <= sal_pc[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|BancoRegistros:Br
-clk => AlmacenReg.we_a.CLK
-clk => AlmacenReg.waddr_a[4].CLK
-clk => AlmacenReg.waddr_a[3].CLK
-clk => AlmacenReg.waddr_a[2].CLK
-clk => AlmacenReg.waddr_a[1].CLK
-clk => AlmacenReg.waddr_a[0].CLK
-clk => AlmacenReg.data_a[31].CLK
-clk => AlmacenReg.data_a[30].CLK
-clk => AlmacenReg.data_a[29].CLK
-clk => AlmacenReg.data_a[28].CLK
-clk => AlmacenReg.data_a[27].CLK
-clk => AlmacenReg.data_a[26].CLK
-clk => AlmacenReg.data_a[25].CLK
-clk => AlmacenReg.data_a[24].CLK
-clk => AlmacenReg.data_a[23].CLK
-clk => AlmacenReg.data_a[22].CLK
-clk => AlmacenReg.data_a[21].CLK
-clk => AlmacenReg.data_a[20].CLK
-clk => AlmacenReg.data_a[19].CLK
-clk => AlmacenReg.data_a[18].CLK
-clk => AlmacenReg.data_a[17].CLK
-clk => AlmacenReg.data_a[16].CLK
-clk => AlmacenReg.data_a[15].CLK
-clk => AlmacenReg.data_a[14].CLK
-clk => AlmacenReg.data_a[13].CLK
-clk => AlmacenReg.data_a[12].CLK
-clk => AlmacenReg.data_a[11].CLK
-clk => AlmacenReg.data_a[10].CLK
-clk => AlmacenReg.data_a[9].CLK
-clk => AlmacenReg.data_a[8].CLK
-clk => AlmacenReg.data_a[7].CLK
-clk => AlmacenReg.data_a[6].CLK
-clk => AlmacenReg.data_a[5].CLK
-clk => AlmacenReg.data_a[4].CLK
-clk => AlmacenReg.data_a[3].CLK
-clk => AlmacenReg.data_a[2].CLK
-clk => AlmacenReg.data_a[1].CLK
-clk => AlmacenReg.data_a[0].CLK
-clk => AlmacenReg.CLK0
+|mips_tb|mips:mipsx|BancoRegistros:Br
 ReadReg1[0] => AlmacenReg.RADDR
 ReadReg1[1] => AlmacenReg.RADDR1
 ReadReg1[2] => AlmacenReg.RADDR2
@@ -775,81 +739,43 @@ ReadReg2[1] => AlmacenReg.PORTBRADDR1
 ReadReg2[2] => AlmacenReg.PORTBRADDR2
 ReadReg2[3] => AlmacenReg.PORTBRADDR3
 ReadReg2[4] => AlmacenReg.PORTBRADDR4
-WriteReg[0] => AlmacenReg.waddr_a[0].DATAIN
 WriteReg[0] => AlmacenReg.WADDR
-WriteReg[1] => AlmacenReg.waddr_a[1].DATAIN
 WriteReg[1] => AlmacenReg.WADDR1
-WriteReg[2] => AlmacenReg.waddr_a[2].DATAIN
 WriteReg[2] => AlmacenReg.WADDR2
-WriteReg[3] => AlmacenReg.waddr_a[3].DATAIN
 WriteReg[3] => AlmacenReg.WADDR3
-WriteReg[4] => AlmacenReg.waddr_a[4].DATAIN
 WriteReg[4] => AlmacenReg.WADDR4
-WriteData[0] => AlmacenReg.data_a[0].DATAIN
 WriteData[0] => AlmacenReg.DATAIN
-WriteData[1] => AlmacenReg.data_a[1].DATAIN
 WriteData[1] => AlmacenReg.DATAIN1
-WriteData[2] => AlmacenReg.data_a[2].DATAIN
 WriteData[2] => AlmacenReg.DATAIN2
-WriteData[3] => AlmacenReg.data_a[3].DATAIN
 WriteData[3] => AlmacenReg.DATAIN3
-WriteData[4] => AlmacenReg.data_a[4].DATAIN
 WriteData[4] => AlmacenReg.DATAIN4
-WriteData[5] => AlmacenReg.data_a[5].DATAIN
 WriteData[5] => AlmacenReg.DATAIN5
-WriteData[6] => AlmacenReg.data_a[6].DATAIN
 WriteData[6] => AlmacenReg.DATAIN6
-WriteData[7] => AlmacenReg.data_a[7].DATAIN
 WriteData[7] => AlmacenReg.DATAIN7
-WriteData[8] => AlmacenReg.data_a[8].DATAIN
 WriteData[8] => AlmacenReg.DATAIN8
-WriteData[9] => AlmacenReg.data_a[9].DATAIN
 WriteData[9] => AlmacenReg.DATAIN9
-WriteData[10] => AlmacenReg.data_a[10].DATAIN
 WriteData[10] => AlmacenReg.DATAIN10
-WriteData[11] => AlmacenReg.data_a[11].DATAIN
 WriteData[11] => AlmacenReg.DATAIN11
-WriteData[12] => AlmacenReg.data_a[12].DATAIN
 WriteData[12] => AlmacenReg.DATAIN12
-WriteData[13] => AlmacenReg.data_a[13].DATAIN
 WriteData[13] => AlmacenReg.DATAIN13
-WriteData[14] => AlmacenReg.data_a[14].DATAIN
 WriteData[14] => AlmacenReg.DATAIN14
-WriteData[15] => AlmacenReg.data_a[15].DATAIN
 WriteData[15] => AlmacenReg.DATAIN15
-WriteData[16] => AlmacenReg.data_a[16].DATAIN
 WriteData[16] => AlmacenReg.DATAIN16
-WriteData[17] => AlmacenReg.data_a[17].DATAIN
 WriteData[17] => AlmacenReg.DATAIN17
-WriteData[18] => AlmacenReg.data_a[18].DATAIN
 WriteData[18] => AlmacenReg.DATAIN18
-WriteData[19] => AlmacenReg.data_a[19].DATAIN
 WriteData[19] => AlmacenReg.DATAIN19
-WriteData[20] => AlmacenReg.data_a[20].DATAIN
 WriteData[20] => AlmacenReg.DATAIN20
-WriteData[21] => AlmacenReg.data_a[21].DATAIN
 WriteData[21] => AlmacenReg.DATAIN21
-WriteData[22] => AlmacenReg.data_a[22].DATAIN
 WriteData[22] => AlmacenReg.DATAIN22
-WriteData[23] => AlmacenReg.data_a[23].DATAIN
 WriteData[23] => AlmacenReg.DATAIN23
-WriteData[24] => AlmacenReg.data_a[24].DATAIN
 WriteData[24] => AlmacenReg.DATAIN24
-WriteData[25] => AlmacenReg.data_a[25].DATAIN
 WriteData[25] => AlmacenReg.DATAIN25
-WriteData[26] => AlmacenReg.data_a[26].DATAIN
 WriteData[26] => AlmacenReg.DATAIN26
-WriteData[27] => AlmacenReg.data_a[27].DATAIN
 WriteData[27] => AlmacenReg.DATAIN27
-WriteData[28] => AlmacenReg.data_a[28].DATAIN
 WriteData[28] => AlmacenReg.DATAIN28
-WriteData[29] => AlmacenReg.data_a[29].DATAIN
 WriteData[29] => AlmacenReg.DATAIN29
-WriteData[30] => AlmacenReg.data_a[30].DATAIN
 WriteData[30] => AlmacenReg.DATAIN30
-WriteData[31] => AlmacenReg.data_a[31].DATAIN
 WriteData[31] => AlmacenReg.DATAIN31
-Regwrite => AlmacenReg.we_a.DATAIN
 Regwrite => AlmacenReg.WE
 ReadData1[0] <= AlmacenReg.DATAOUT
 ReadData1[1] <= AlmacenReg.DATAOUT1
@@ -917,7 +843,7 @@ ReadData2[30] <= AlmacenReg.PORTBDATAOUT30
 ReadData2[31] <= AlmacenReg.PORTBDATAOUT31
 
 
-|mips|UnidadControl:control
+|mips_tb|mips:mipsx|UnidadControl:control
 Entrada[0] => Equal0.IN5
 Entrada[0] => Equal1.IN5
 Entrada[0] => Equal2.IN2
@@ -985,7 +911,7 @@ MemtoReg <= MemtoReg.DB_MAX_OUTPUT_PORT_TYPE
 RegWrite <= RegWrite.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Shift_left_J:Shift2
+|mips_tb|mips:mipsx|Shift_left_J:Shift2
 entrada[0] => salida[2].DATAIN
 entrada[1] => salida[3].DATAIN
 entrada[2] => salida[4].DATAIN
@@ -1040,7 +966,7 @@ salida[24] <= entrada[22].DB_MAX_OUTPUT_PORT_TYPE
 salida[25] <= entrada[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Sing_ext_J:Sing2
+|mips_tb|mips:mipsx|Sing_ext_J:Sing2
 entrada[0] => salida[0].DATAIN
 entrada[1] => salida[1].DATAIN
 entrada[2] => salida[2].DATAIN
@@ -1101,7 +1027,7 @@ salida[30] <= <GND>
 salida[31] <= <GND>
 
 
-|mips|Sing_ext:sing_ext1
+|mips_tb|mips:mipsx|Sing_ext:sing_ext1
 entrada[0] => salida[0].DATAIN
 entrada[1] => salida[1].DATAIN
 entrada[2] => salida[2].DATAIN
@@ -1168,7 +1094,7 @@ salida[30] <= entrada[15].DB_MAX_OUTPUT_PORT_TYPE
 salida[31] <= entrada[15].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|buffer2:bufferb
+|mips_tb|mips:mipsx|buffer2:bufferb
 clk => salida2[16]~reg0.CLK
 clk => salida2[17]~reg0.CLK
 clk => salida2[18]~reg0.CLK
@@ -1714,7 +1640,7 @@ salida2[19] <= salida2[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 salida2[20] <= salida2[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Shift_left:sleft
+|mips_tb|mips:mipsx|Shift_left:sleft
 entrada[0] => salida[2].DATAIN
 entrada[1] => salida[3].DATAIN
 entrada[2] => salida[4].DATAIN
@@ -1781,7 +1707,7 @@ salida[30] <= entrada[28].DB_MAX_OUTPUT_PORT_TYPE
 salida[31] <= entrada[29].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Mux2:Muxb
+|mips_tb|mips:mipsx|Mux2:Muxb
 sing_ext1[0] => salida.DATAB
 sing_ext1[1] => salida.DATAB
 sing_ext1[2] => salida.DATAB
@@ -1912,7 +1838,7 @@ salida[30] <= salida.DB_MAX_OUTPUT_PORT_TYPE
 salida[31] <= salida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Mux3:Muxc
+|mips_tb|mips:mipsx|Mux3:Muxc
 entrada1[0] => salida.DATAB
 entrada1[1] => salida.DATAB
 entrada1[2] => salida.DATAB
@@ -1935,7 +1861,7 @@ salida[3] <= salida.DB_MAX_OUTPUT_PORT_TYPE
 salida[4] <= salida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|controlAlu:controlalu1
+|mips_tb|mips:mipsx|controlAlu:controlalu1
 entrada[0] => Equal1.IN31
 entrada[0] => Equal2.IN3
 entrada[0] => Equal3.IN1
@@ -1994,7 +1920,7 @@ salida[2] <= salida[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 salida[3] <= salida[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|alu:alu1
+|mips_tb|mips:mipsx|alu:alu1
 Data1[0] => salida.IN0
 Data1[0] => Add0.IN32
 Data1[0] => Add1.IN64
@@ -2894,7 +2820,7 @@ salida[31] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 zflag <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Adder:leadder
+|mips_tb|mips:mipsx|Adder:leadder
 entrPc[0] => Add0.IN32
 entrPc[1] => Add0.IN31
 entrPc[2] => Add0.IN30
@@ -2993,7 +2919,7 @@ ResBranch[30] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 ResBranch[31] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|buffer3:bufferc
+|mips_tb|mips:mipsx|buffer3:bufferc
 clk => sal_writeReg[0]~reg0.CLK
 clk => sal_writeReg[1]~reg0.CLK
 clk => sal_writeReg[2]~reg0.CLK
@@ -3416,99 +3342,23 @@ sal_writeReg[3] <= sal_writeReg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sal_writeReg[4] <= sal_writeReg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|branch:branch1
+|mips_tb|mips:mipsx|branch:branch1
 Branch => salida.IN0
 zflag => salida.IN1
 salida <= salida.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|MemoriaDato:MemDato
-clk => mem.we_a.CLK
-clk => mem.waddr_a[4].CLK
-clk => mem.waddr_a[3].CLK
-clk => mem.waddr_a[2].CLK
-clk => mem.waddr_a[1].CLK
-clk => mem.waddr_a[0].CLK
-clk => mem.data_a[31].CLK
-clk => mem.data_a[30].CLK
-clk => mem.data_a[29].CLK
-clk => mem.data_a[28].CLK
-clk => mem.data_a[27].CLK
-clk => mem.data_a[26].CLK
-clk => mem.data_a[25].CLK
-clk => mem.data_a[24].CLK
-clk => mem.data_a[23].CLK
-clk => mem.data_a[22].CLK
-clk => mem.data_a[21].CLK
-clk => mem.data_a[20].CLK
-clk => mem.data_a[19].CLK
-clk => mem.data_a[18].CLK
-clk => mem.data_a[17].CLK
-clk => mem.data_a[16].CLK
-clk => mem.data_a[15].CLK
-clk => mem.data_a[14].CLK
-clk => mem.data_a[13].CLK
-clk => mem.data_a[12].CLK
-clk => mem.data_a[11].CLK
-clk => mem.data_a[10].CLK
-clk => mem.data_a[9].CLK
-clk => mem.data_a[8].CLK
-clk => mem.data_a[7].CLK
-clk => mem.data_a[6].CLK
-clk => mem.data_a[5].CLK
-clk => mem.data_a[4].CLK
-clk => mem.data_a[3].CLK
-clk => mem.data_a[2].CLK
-clk => mem.data_a[1].CLK
-clk => mem.data_a[0].CLK
-clk => MemRes[0]~reg0.CLK
-clk => MemRes[1]~reg0.CLK
-clk => MemRes[2]~reg0.CLK
-clk => MemRes[3]~reg0.CLK
-clk => MemRes[4]~reg0.CLK
-clk => MemRes[5]~reg0.CLK
-clk => MemRes[6]~reg0.CLK
-clk => MemRes[7]~reg0.CLK
-clk => MemRes[8]~reg0.CLK
-clk => MemRes[9]~reg0.CLK
-clk => MemRes[10]~reg0.CLK
-clk => MemRes[11]~reg0.CLK
-clk => MemRes[12]~reg0.CLK
-clk => MemRes[13]~reg0.CLK
-clk => MemRes[14]~reg0.CLK
-clk => MemRes[15]~reg0.CLK
-clk => MemRes[16]~reg0.CLK
-clk => MemRes[17]~reg0.CLK
-clk => MemRes[18]~reg0.CLK
-clk => MemRes[19]~reg0.CLK
-clk => MemRes[20]~reg0.CLK
-clk => MemRes[21]~reg0.CLK
-clk => MemRes[22]~reg0.CLK
-clk => MemRes[23]~reg0.CLK
-clk => MemRes[24]~reg0.CLK
-clk => MemRes[25]~reg0.CLK
-clk => MemRes[26]~reg0.CLK
-clk => MemRes[27]~reg0.CLK
-clk => MemRes[28]~reg0.CLK
-clk => MemRes[29]~reg0.CLK
-clk => MemRes[30]~reg0.CLK
-clk => MemRes[31]~reg0.CLK
-clk => mem.CLK0
-Address[0] => mem.waddr_a[0].DATAIN
-Address[0] => mem.WADDR
+|mips_tb|mips:mipsx|MemoriaDato:MemDato
 Address[0] => mem.RADDR
-Address[1] => mem.waddr_a[1].DATAIN
-Address[1] => mem.WADDR1
+Address[0] => mem.WADDR
 Address[1] => mem.RADDR1
-Address[2] => mem.waddr_a[2].DATAIN
-Address[2] => mem.WADDR2
+Address[1] => mem.WADDR1
 Address[2] => mem.RADDR2
-Address[3] => mem.waddr_a[3].DATAIN
-Address[3] => mem.WADDR3
+Address[2] => mem.WADDR2
 Address[3] => mem.RADDR3
-Address[4] => mem.waddr_a[4].DATAIN
-Address[4] => mem.WADDR4
+Address[3] => mem.WADDR3
 Address[4] => mem.RADDR4
+Address[4] => mem.WADDR4
 Address[5] => ~NO_FANOUT~
 Address[6] => ~NO_FANOUT~
 Address[7] => ~NO_FANOUT~
@@ -3536,139 +3386,106 @@ Address[28] => ~NO_FANOUT~
 Address[29] => ~NO_FANOUT~
 Address[30] => ~NO_FANOUT~
 Address[31] => ~NO_FANOUT~
-WriteData[0] => mem.data_a[0].DATAIN
 WriteData[0] => mem.DATAIN
-WriteData[1] => mem.data_a[1].DATAIN
 WriteData[1] => mem.DATAIN1
-WriteData[2] => mem.data_a[2].DATAIN
 WriteData[2] => mem.DATAIN2
-WriteData[3] => mem.data_a[3].DATAIN
 WriteData[3] => mem.DATAIN3
-WriteData[4] => mem.data_a[4].DATAIN
 WriteData[4] => mem.DATAIN4
-WriteData[5] => mem.data_a[5].DATAIN
 WriteData[5] => mem.DATAIN5
-WriteData[6] => mem.data_a[6].DATAIN
 WriteData[6] => mem.DATAIN6
-WriteData[7] => mem.data_a[7].DATAIN
 WriteData[7] => mem.DATAIN7
-WriteData[8] => mem.data_a[8].DATAIN
 WriteData[8] => mem.DATAIN8
-WriteData[9] => mem.data_a[9].DATAIN
 WriteData[9] => mem.DATAIN9
-WriteData[10] => mem.data_a[10].DATAIN
 WriteData[10] => mem.DATAIN10
-WriteData[11] => mem.data_a[11].DATAIN
 WriteData[11] => mem.DATAIN11
-WriteData[12] => mem.data_a[12].DATAIN
 WriteData[12] => mem.DATAIN12
-WriteData[13] => mem.data_a[13].DATAIN
 WriteData[13] => mem.DATAIN13
-WriteData[14] => mem.data_a[14].DATAIN
 WriteData[14] => mem.DATAIN14
-WriteData[15] => mem.data_a[15].DATAIN
 WriteData[15] => mem.DATAIN15
-WriteData[16] => mem.data_a[16].DATAIN
 WriteData[16] => mem.DATAIN16
-WriteData[17] => mem.data_a[17].DATAIN
 WriteData[17] => mem.DATAIN17
-WriteData[18] => mem.data_a[18].DATAIN
 WriteData[18] => mem.DATAIN18
-WriteData[19] => mem.data_a[19].DATAIN
 WriteData[19] => mem.DATAIN19
-WriteData[20] => mem.data_a[20].DATAIN
 WriteData[20] => mem.DATAIN20
-WriteData[21] => mem.data_a[21].DATAIN
 WriteData[21] => mem.DATAIN21
-WriteData[22] => mem.data_a[22].DATAIN
 WriteData[22] => mem.DATAIN22
-WriteData[23] => mem.data_a[23].DATAIN
 WriteData[23] => mem.DATAIN23
-WriteData[24] => mem.data_a[24].DATAIN
 WriteData[24] => mem.DATAIN24
-WriteData[25] => mem.data_a[25].DATAIN
 WriteData[25] => mem.DATAIN25
-WriteData[26] => mem.data_a[26].DATAIN
 WriteData[26] => mem.DATAIN26
-WriteData[27] => mem.data_a[27].DATAIN
 WriteData[27] => mem.DATAIN27
-WriteData[28] => mem.data_a[28].DATAIN
 WriteData[28] => mem.DATAIN28
-WriteData[29] => mem.data_a[29].DATAIN
 WriteData[29] => mem.DATAIN29
-WriteData[30] => mem.data_a[30].DATAIN
 WriteData[30] => mem.DATAIN30
-WriteData[31] => mem.data_a[31].DATAIN
 WriteData[31] => mem.DATAIN31
-MemWrite => mem.we_a.DATAIN
 MemWrite => mem.WE
-MemRead => MemRes[0]~reg0.ENA
-MemRead => MemRes[1]~reg0.ENA
-MemRead => MemRes[2]~reg0.ENA
-MemRead => MemRes[3]~reg0.ENA
-MemRead => MemRes[4]~reg0.ENA
-MemRead => MemRes[5]~reg0.ENA
-MemRead => MemRes[6]~reg0.ENA
-MemRead => MemRes[7]~reg0.ENA
-MemRead => MemRes[8]~reg0.ENA
-MemRead => MemRes[9]~reg0.ENA
-MemRead => MemRes[10]~reg0.ENA
-MemRead => MemRes[11]~reg0.ENA
-MemRead => MemRes[12]~reg0.ENA
-MemRead => MemRes[13]~reg0.ENA
-MemRead => MemRes[14]~reg0.ENA
-MemRead => MemRes[15]~reg0.ENA
-MemRead => MemRes[16]~reg0.ENA
-MemRead => MemRes[17]~reg0.ENA
-MemRead => MemRes[18]~reg0.ENA
-MemRead => MemRes[19]~reg0.ENA
-MemRead => MemRes[20]~reg0.ENA
-MemRead => MemRes[21]~reg0.ENA
-MemRead => MemRes[22]~reg0.ENA
-MemRead => MemRes[23]~reg0.ENA
-MemRead => MemRes[24]~reg0.ENA
-MemRead => MemRes[25]~reg0.ENA
-MemRead => MemRes[26]~reg0.ENA
-MemRead => MemRes[27]~reg0.ENA
-MemRead => MemRes[28]~reg0.ENA
-MemRead => MemRes[29]~reg0.ENA
-MemRead => MemRes[30]~reg0.ENA
-MemRead => MemRes[31]~reg0.ENA
-MemRes[0] <= MemRes[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[1] <= MemRes[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[2] <= MemRes[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[3] <= MemRes[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[4] <= MemRes[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[5] <= MemRes[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[6] <= MemRes[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[7] <= MemRes[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[8] <= MemRes[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[9] <= MemRes[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[10] <= MemRes[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[11] <= MemRes[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[12] <= MemRes[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[13] <= MemRes[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[14] <= MemRes[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[15] <= MemRes[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[16] <= MemRes[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[17] <= MemRes[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[18] <= MemRes[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[19] <= MemRes[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[20] <= MemRes[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[21] <= MemRes[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[22] <= MemRes[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[23] <= MemRes[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[24] <= MemRes[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[25] <= MemRes[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[26] <= MemRes[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[27] <= MemRes[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[28] <= MemRes[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[29] <= MemRes[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[30] <= MemRes[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-MemRes[31] <= MemRes[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+MemRead => MemRes[0]$latch.LATCH_ENABLE
+MemRead => MemRes[1]$latch.LATCH_ENABLE
+MemRead => MemRes[2]$latch.LATCH_ENABLE
+MemRead => MemRes[3]$latch.LATCH_ENABLE
+MemRead => MemRes[4]$latch.LATCH_ENABLE
+MemRead => MemRes[5]$latch.LATCH_ENABLE
+MemRead => MemRes[6]$latch.LATCH_ENABLE
+MemRead => MemRes[7]$latch.LATCH_ENABLE
+MemRead => MemRes[8]$latch.LATCH_ENABLE
+MemRead => MemRes[9]$latch.LATCH_ENABLE
+MemRead => MemRes[10]$latch.LATCH_ENABLE
+MemRead => MemRes[11]$latch.LATCH_ENABLE
+MemRead => MemRes[12]$latch.LATCH_ENABLE
+MemRead => MemRes[13]$latch.LATCH_ENABLE
+MemRead => MemRes[14]$latch.LATCH_ENABLE
+MemRead => MemRes[15]$latch.LATCH_ENABLE
+MemRead => MemRes[16]$latch.LATCH_ENABLE
+MemRead => MemRes[17]$latch.LATCH_ENABLE
+MemRead => MemRes[18]$latch.LATCH_ENABLE
+MemRead => MemRes[19]$latch.LATCH_ENABLE
+MemRead => MemRes[20]$latch.LATCH_ENABLE
+MemRead => MemRes[21]$latch.LATCH_ENABLE
+MemRead => MemRes[22]$latch.LATCH_ENABLE
+MemRead => MemRes[23]$latch.LATCH_ENABLE
+MemRead => MemRes[24]$latch.LATCH_ENABLE
+MemRead => MemRes[25]$latch.LATCH_ENABLE
+MemRead => MemRes[26]$latch.LATCH_ENABLE
+MemRead => MemRes[27]$latch.LATCH_ENABLE
+MemRead => MemRes[28]$latch.LATCH_ENABLE
+MemRead => MemRes[29]$latch.LATCH_ENABLE
+MemRead => MemRes[30]$latch.LATCH_ENABLE
+MemRead => MemRes[31]$latch.LATCH_ENABLE
+MemRes[0] <= MemRes[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[1] <= MemRes[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[2] <= MemRes[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[3] <= MemRes[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[4] <= MemRes[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[5] <= MemRes[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[6] <= MemRes[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[7] <= MemRes[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[8] <= MemRes[8]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[9] <= MemRes[9]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[10] <= MemRes[10]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[11] <= MemRes[11]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[12] <= MemRes[12]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[13] <= MemRes[13]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[14] <= MemRes[14]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[15] <= MemRes[15]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[16] <= MemRes[16]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[17] <= MemRes[17]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[18] <= MemRes[18]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[19] <= MemRes[19]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[20] <= MemRes[20]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[21] <= MemRes[21]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[22] <= MemRes[22]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[23] <= MemRes[23]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[24] <= MemRes[24]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[25] <= MemRes[25]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[26] <= MemRes[26]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[27] <= MemRes[27]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[28] <= MemRes[28]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[29] <= MemRes[29]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[30] <= MemRes[30]$latch.DB_MAX_OUTPUT_PORT_TYPE
+MemRes[31] <= MemRes[31]$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|buffer4:bufferd
+|mips_tb|mips:mipsx|buffer4:bufferd
 clk => sal_WriteReg[0]~reg0.CLK
 clk => sal_WriteReg[1]~reg0.CLK
 clk => sal_WriteReg[2]~reg0.CLK
@@ -3884,7 +3701,7 @@ sal_WriteReg[3] <= sal_WriteReg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sal_WriteReg[4] <= sal_WriteReg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|mips|Mux4:Mux_4
+|mips_tb|mips:mipsx|Mux4:Mux_4
 AluRes0[0] => WriteDat.DATAA
 AluRes0[1] => WriteDat.DATAA
 AluRes0[2] => WriteDat.DATAA
