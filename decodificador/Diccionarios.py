@@ -63,6 +63,7 @@ funcs = {
     "sw": ["rt", "bo"],  # especial
     "lw": ["rt", "bo"],  # especial
     "addi": ["rt", "rs", "c"],  # real -> rs rt c
+    "slti": ["rt", "rs", "c"],  # real -> rs rt c
     "j": ["o"],  # especial
     "or": ["rd", "rs", "rt"],  # real -> rs rt rd
     "slt": ["rd", "rs", "rt"],  # real -> rs rt rd
@@ -73,6 +74,7 @@ funcs = {
 funcs_noSpecial_noR = {
     "addi": ["001000", 5, 5, 16],
     "andi": ["001100", 5, 5, 16],
+    "slti": ["001010", 5, 5, 16],
     "ori": ["001101", 5, 5, 16],
     "beq": ["000100", 5, 5, 16],
     "lw": ["110001", 5, 5, 16],

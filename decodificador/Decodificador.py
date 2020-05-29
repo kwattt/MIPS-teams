@@ -185,6 +185,8 @@ def toinstruction():
 
                 elif rpam[0] == "addi":
                     addinstruction(linex[1], ["addi", rpam[2], rpam[1], rpam[3]],2)
+                elif rpam[0] == "slti":
+                    addinstruction(linex[1], ["slti", rpam[2], rpam[1], rpam[3]],2)
                 elif rpam[0] == "ori":
                     addinstruction(linex[1], ["ori", rpam[2], rpam[1], rpam[3]],2)
                 elif rpam[0] == "andi":
